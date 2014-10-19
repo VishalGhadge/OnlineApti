@@ -62,6 +62,10 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <!-- END CSS TEMPLATE -->
 
     <link href="assets/plugins/boostrap-slider/css/slider.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/css/sky-forms.css" />
+    <link rel="stylesheet" href="assets/css/sky-forms-black.css" />
+    <link rel="stylesheet" href="assets/css/form_validate.css" />
     <!-- END CSS TEMPLATE -->
 </head>
 <!-- END HEAD -->
@@ -109,78 +113,119 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                     <h4 style="color: #0090D9;">Add <span class="semi-bold" style="color: #0aa699">&nbsp;New Admin</span></h4>
                                     <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
                                 </div>
+                                
                                 <div class="grid-body no-border">
-                                    <div class="row-fluid">
-                                        <div class="span4">
-                                            <h5><span class="semi-bold">Select Department :</span></h5>
+                                    <div class="add_admins">
+                                    <form action="" id="admin-form">
+                                        <div>
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                    <h5><span class="semi-bold">Admin Name :</span></h5>
+                                                </div>
+                                                <div class="span7">
+                                                    <input type="text" style="width:93%" name="a_name" id="a_name" />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="span7">
-                                            <select id="source" style="width:100%" tabindex="-1" class="select2-offscreen">
-                                                <optgroup label="Science Field">
-                                                    <option value="1">Computer_Sci
-                                                    </option>
-                                                </optgroup>
-                                                <optgroup label="Math Field">
-                                                    <option value="2">Mathematics
-                                                    </option></optgroup>
-                                            </select>
+
+                                        <div>
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                    <h5><span class="semi-bold">Temporary Pass :</span></h5>
+                                                </div>
+                                                <div class="span7">
+                                                    <input type="password" style="width:93%" name="password" id="password" />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+
+                                        <div style="margin-top: 5px;">
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                    <h5><span class="semi-bold">Select Department :</span></h5>
+                                                </div>
+                                                <div class="span7">
+                                                    <select id="source" style="width:100%" tabindex="-1" class="select2-offscreen" name="field">
+                                                        <optgroup label="Science Field">
+                                                            <option value="1">Computer_Sci
+                                                            </option>
+                                                        </optgroup>
+                                                        <optgroup label="Math Field">
+                                                            <option value="2">Mathematics
+                                                            </option></optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="result sc_infobox " style="display: none;"></div>
+                                        <footer>
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
+                                                </div>
+                                                <div class="span7">
+                                                    <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-right: ">Add</button>
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </form>
+                                </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>		
-            </div>
-        </div> 
-    </div>  
-    <!-- END PAGE --> 
-</div>
-<!-- BEGIN CHAT --> 
+                    </div>		
+                </div>
+            </div> 
+        </div>  
+        <!-- END PAGE --> 
+    </div>
+    <!-- BEGIN CHAT --> 
 
-<!-- END CHAT --> 
-<!-- END CONTAINER --> 
+    <!-- END CHAT --> 
+    <!-- END CONTAINER --> 
 
-<!-- BEGIN CORE JS FRAMEWORK--> 
+    <!-- BEGIN CORE JS FRAMEWORK--> 
 
-<!-- END CORE JS FRAMEWORK --> 
-<!--[if lt IE 9]>
-        <script src="assets/plugins/excanvas.js"></script>
-        <script src="assets/plugins/respond.js"></script>	
-        <![endif]--> 
+    <!-- END CORE JS FRAMEWORK --> 
+    <!--[if lt IE 9]>
+            <script src="assets/plugins/excanvas.js"></script>
+            <script src="assets/plugins/respond.js"></script>	
+            <![endif]--> 
 
-<!-- BEGIN PAGE LEVEL JS --> 
-<script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/plugins/breakpoints.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+    <!-- BEGIN PAGE LEVEL JS --> 
+    <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/breakpoints.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
 
-<!-- END CORE JS FRAMEWORK -->
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
-<!-- END CORE PLUGINS -->
+    <!-- END CORE JS FRAMEWORK -->
+    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
 
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
-<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-inputmask/jquery.inputmask.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
-<script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
-<script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
-<script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<script src="assets/js/form_elements.js" type="text/javascript"></script>
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="assets/js/core.js" type="text/javascript"></script>
-<script src="assets/js/demo.js" type="text/javascript"></script>
-<!-- END CORE TEMPLATE JS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
+    <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-inputmask/jquery.inputmask.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
+    <script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script src="assets/js/form_elements.js" type="text/javascript"></script>
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="assets/js/core.js" type="text/javascript"></script>
+    <script src="assets/js/demo.js" type="text/javascript"></script>
+
+    <script src="assets/js/lib.js" type="text/javascript"></script>
+    <!-- END CORE TEMPLATE JS -->
 </div></body>

@@ -290,25 +290,25 @@ jQuery(window).load(function() {
     }
 
 
-    // adding device ..!!
-    jQuery('.add_devices form').keypress(function(e) {
+    // adding Admin ..!!
+    jQuery('.add_admins form').keypress(function(e) {
 
         if (e.keyCode === 13) {
-            jQuery('.add_devices #enter').trigger('click');
+            jQuery('.add_admins #add_admin').trigger('click');
             e.preventDefault();
             return false;
         }
     });
-    jQuery('.add_devices #enter').click(function(e) {
+    jQuery('.add_admins #add_admin').click(function(e) {
 
         console.log('click');
-        AddDevice();
+        validate_Admin();
         e.preventDefault();
         return false;
     });
     // Check for validity Register Form
-    function AddDevice() {
-        var error = formValidate(jQuery(".add_devices form"), {
+    function validate_Admin() {
+        var error = formValidate(jQuery(".add_admins form"), {
             error_message_show: true,
             error_message_time: 5000,
             error_message_class: "sc_infobox sc_infobox_style_error",
@@ -316,38 +316,22 @@ jQuery(window).load(function() {
             exit_after_first_error: true,
             rules: [
                 {
-                    field: "Device_Name",
-                    min_length: {value: 1, message: "The Device Name field can\'t be empty"},
-                    max_length: {value: 60, message: "Too long Device Name field"}
-                }, {
-                    field: "Username",
-                    min_length: {value: 5, message: "The Username field can\'t be empty"},
-                    max_length: {value: 20, message: "Too long Username field"}
-                },
+                    field: "a_name",
+                    min_length: {value: 1, message: "The Name cant be empty !!"},
+                    max_length: {value: 60, message: "The Name is too laong"}
+                }, 
                 {
-                    field: "Password",
+                    field: "password",
                     min_length: {value: 5, message: "The password can\'t be empty and shorter then 5 characters"},
                     max_length: {value: 20, message: "Too long password"}
                 },
-                {
-                    field: "C_Password",
-                    equal_to: {value: 'Password', message: "The passwords in both fields are not equal"}
-                }, {
-                    field: "Device_Version",
-                    min_length: {value: 1, message: "The Device Version field can\'t be empty"},
-                    max_length: {value: 20, message: "Too long Device Version field"}
-                }, {
-                    field: "Device_Owner",
-                    min_length: {value: 1, message: "The Device Owner field can\'t be empty"},
-                    max_length: {value: 20, message: "Too long Device Owner field"}
-                }
             ]
         });
 
         if (!error) {
 //            document.forms['registration_form'].submit();
 
-            performAddDevice();
+            add_Admin();
         }
     }
 
@@ -356,51 +340,46 @@ jQuery(window).load(function() {
      * This method is used for Admin registration
      * @returns {undefined}
      */
-    function  performAddDevice() {
+    function  add_Admin() {
 
         jQuery(".loader img").fadeIn(100);
-        jQuery('.add_devices .result').removeAttr('style');
-        jQuery.post('webservice/add-device.php',
+        jQuery('.add_admins .result').removeAttr('style');
+        jQuery.post('WebServices/add_Admin.php',
                 {
-                    Admin_Id: jQuery('#Admin_Id').val(),
-                    Device_Name: jQuery('#Device_Name').val(),
-                    Username: jQuery('#Username').val(),
-                    Password: jQuery('#Password').val(),
-                    Device_Version: jQuery('#Device_Version').val(),
-                    Device_Owner: jQuery('#Device_Owner').val(),
+                    a_name: jQuery('#a_name').val(),
+                    password: jQuery('#password').val(),
+                    field: jQuery('#source').val()
                 },
                 function(rez) {
 
 
 //            var rez = JSON.parse(response);
-                    jQuery('.add_devices .result')
+                    jQuery('.add_admins .result')
                             .toggleClass('sc_infobox_style_error', false)
                             .toggleClass('sc_infobox_style_success', false);
                     if (rez.success == 1) {
-                        jQuery('.add_devices .result').addClass('sc_infobox_style_success').html('Device Added Successfully !');
-                        setTimeout("jQuery('.add_devices .close').trigger('click'); jQuery('.login-popup-link').trigger('click');", 2000);
+                        jQuery('.add_admins .result').addClass('sc_infobox_style_success').html('Device Added Successfully !');
+                        setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');", 2000);
 
-                        jQuery('#Device_Name').val('');
-                        jQuery('#Username').val('');
-                        jQuery('#Password').val('');
-                        jQuery('#C_Password').val('');
-                        jQuery('#Device_Version').val('');
-                        jQuery('#Device_Owner').val('');
+                        jQuery('#a_name').val('');
+                        jQuery('#password').val('');
+                        jQuery('#source').val('');
+                        
 
 //                        setTimeout('window.location.href = "http://adminpea.openinfotech.org/sign-in.php";', 1000);
                     } else if (rez.success == -1) {
-                        jQuery('.add_devices .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
+                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
 
 
-                        jQuery("#Username").toggleClass("error_fields_class", true);
+                        jQuery("#a_name").toggleClass("error_fields_class", true);
 
 
 
                     } else {
-                        jQuery('.add_devices .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
+                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
                     }
-                    jQuery('.add_devices .result').fadeIn(500);
-                    setTimeout("jQuery('.add_devices .result').fadeOut()", 6000);
+                    jQuery('.add_admins .result').fadeIn(500);
+                    setTimeout("jQuery('.add_admins .result').fadeOut()", 6000);
 
 //            console.log("session destroys");
 //            location.reload();
