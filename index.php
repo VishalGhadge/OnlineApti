@@ -36,16 +36,16 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <meta content="<?php echo $Website_Meta_Author; ?>" name="author" />
 
     <!-- BEGIN PLUGIN CSS -->
-    <link href="assets/plugins/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap-tag/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/dropzone/css/dropzone.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/plugins/jquery-ricksaw-chart/css/rickshaw.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="assets/plugins/jquery-morris-chart/css/morris.css" type="text/css" media="screen" charset="utf-8" />
-    <link href="assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/ios-switch/ios7-switch.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
     <link href="assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/jquery-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="assets/plugins/boostrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen" />
     <!-- END PLUGIN CSS -->
 
     <!-- BEGIN CORE CSS FRAMEWORK -->
@@ -59,6 +59,9 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/custom-icon-set.css" rel="stylesheet" type="text/css" />
+    <!-- END CSS TEMPLATE -->
+
+    <link href="assets/plugins/boostrap-slider/css/slider.css" rel="stylesheet" type="text/css" />
     <!-- END CSS TEMPLATE -->
 </head>
 <!-- END HEAD -->
@@ -100,32 +103,27 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <div id="container">
 
                     <div class="row-fluid">
-                        <div class="span7">
+                        <div class="span5">
                             <div class="grid simple">
                                 <div class="grid-title no-border">
-                                    <h4>Add <span class="semi-bold">New Admin</span></h4>
+                                    <h4 style="color: #0090D9;">Add <span class="semi-bold" style="color: #0aa699">&nbsp;New Admin</span></h4>
                                     <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
                                 </div>
                                 <div class="grid-body no-border">
                                     <div class="row-fluid">
-                                        <div class="span12">
-                                            <br>
-                                            <div class="row-fluid">
-                                                <div class="span5">
-                                                    <h5>Select Department :</h5>
-                                                </div>
-                                                <div class="span7">
-                                                <select id="source" style="width:100%" tabindex="-1" class="select2-offscreen">
-                                                    <optgroup label="Science Field">
-                                                        <option value="1">Computer_Sci
-                                                        </option>
-                                                    </optgroup>
-                                                    <optgroup label="Math Field">
-                                                        <option value="2">Mathematics
-                                                        </option></optgroup>
-                                                </select>
-                                                </div>
-                                            </div>
+                                        <div class="span4">
+                                            <h5><span class="semi-bold">Select Department :</span></h5>
+                                        </div>
+                                        <div class="span7">
+                                            <select id="source" style="width:100%" tabindex="-1" class="select2-offscreen">
+                                                <optgroup label="Science Field">
+                                                    <option value="1">Computer_Sci
+                                                    </option>
+                                                </optgroup>
+                                                <optgroup label="Math Field">
+                                                    <option value="2">Mathematics
+                                                    </option></optgroup>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -145,11 +143,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
 <!-- END CONTAINER --> 
 
 <!-- BEGIN CORE JS FRAMEWORK--> 
-<script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
-<script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script> 
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
-<script src="assets/plugins/breakpoints.js" type="text/javascript"></script> 
-<script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
+
 <!-- END CORE JS FRAMEWORK --> 
 <!--[if lt IE 9]>
         <script src="assets/plugins/excanvas.js"></script>
@@ -157,40 +151,36 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
         <![endif]--> 
 
 <!-- BEGIN PAGE LEVEL JS --> 
-<script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>  
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
-<script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script> 
-<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>  
-<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
-<script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
-<script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-<script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
-<script src="assets/plugins/jquery-ricksaw-chart/js/raphael-min.js"></script> 
-<script src="assets/plugins/jquery-ricksaw-chart/js/d3.v2.js"></script>
-<script src="assets/plugins/jquery-ricksaw-chart/js/rickshaw.min.js"></script>
-<script src="assets/plugins/jquery-morris-chart/js/morris.min.js"></script>
-<script src="assets/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
-<script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script> 	
-<script src="assets/plugins/jquery-jvectormap/js/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script> 	
-<script src="assets/plugins/jquery-jvectormap/js/jquery-jvectormap-us-lcc-en.js" type="text/javascript"></script> 	
-<script src="assets/plugins/jquery-sparkline/jquery-sparkline.js"></script>
-<script src="assets/plugins/jquery-flot/jquery.flot.min.js"></script>
-<script src="assets/plugins/jquery-flot/jquery.flot.animator.min.js"></script>
-<script src="assets/plugins/skycons/skycons.js"></script>
+<script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/plugins/breakpoints.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
 
-<!-- END PAGE LEVEL PLUGINS --> 	
-<!-- PAGE JS -->
-<script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
-<script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
+<!-- END CORE JS FRAMEWORK -->
+<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
+<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-inputmask/jquery.inputmask.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
+<script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
 <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
 <script src="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
 <script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
 <script src="assets/js/form_elements.js" type="text/javascript"></script>
-<script src="assets/js/dashboard.js" type="text/javascript"></script> 
-<!-- BEGIN CORE TEMPLATE JS --> 
-<script src="assets/js/core.js" type="text/javascript"></script> 
-<script src="assets/js/demo.js" type="text/javascript"></script> 
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="assets/js/core.js" type="text/javascript"></script>
+<script src="assets/js/demo.js" type="text/javascript"></script>
 <!-- END CORE TEMPLATE JS -->
 </div></body>

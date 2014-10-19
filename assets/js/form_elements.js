@@ -59,6 +59,7 @@ $(document).ready(function() {
 
     //Cool ios7 switch - Beta version
 //Done using pure Javascript
+/*
     var Switch = require('ios7-switch')
             , checkbox = document.querySelector('.ios')
             , mySwitch = new Switch(checkbox);
@@ -76,4 +77,5 @@ $(document).ready(function() {
         e.preventDefault();
         mySwitch2.toggle();
     }, false);
+    */
 });

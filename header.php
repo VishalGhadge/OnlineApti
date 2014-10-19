@@ -24,7 +24,7 @@
                     
                 </ul>
                 <ul class="nav quick-section">
-                    <h4><p class="text-info">Department of <?php echo $dept?></p></h4>
+                    <h4><p class="text-info" >Department of <?php echo $dept?></p></h4>
                 </ul>
             </div>
             <!-- END TOP NAVIGATION MENU -->
