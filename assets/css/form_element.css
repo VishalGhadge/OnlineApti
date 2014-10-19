@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 8, 2014, 4:13:16 PM
+    Author     : CodeLord
+*/
+div.sc_infobox { text-align: center; padding: 9px 10px 9px; text-transform: capitalize; font-size: 12px; line-height: 15px; margin: 0 0 15px 0; font-weight:bold; position:relative;}
+div.sc_infobox_style_error {color: #f6eaea;
+                            border: 1px solid #A83232;
+                            border-radius: 10px;
+                            background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #FA8C8C), color-stop(0.8, #A83232) );
+                            background-image: -o-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                            background-image: -moz-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                            background-image: -webkit-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                            background-image: -ms-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                            background-image: linear-gradient(to bottom, #FA8C8C 0%, #A83232 80%);
+}
+
+form .error_fields_class{ border: 1px solid #e50700 !important; }
+form .result { margin-top: 4px !important;}
+form .result p.error_item { margin:6px auto 0 !important;}
+form .result p.error_item:first { margin:0 auto !important;}
+.login-popup form .result,
+.registration-popup form .result { display:none; position:absolute !important; z-index: 9002; top:156px; left:15px; width:440px;}
+
+div.sc_infobox_style_success { color: #94aa5f; border: 1px solid #c8dc88;
+                               border-radius: 10px;
+                               background: rgb(252,255,243); /* Old browsers */
+                               background: -moz-linear-gradient(top,  rgba(252,255,243,1) 0%, rgba(230,239,196,1) 100%); /* FF3.6+ */
+                               background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,243,1)), color-stop(100%,rgba(230,239,196,1))); /* Chrome,Safari4+ */
+                               background: -webkit-linear-gradient(top,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* Chrome10+,Safari5.1+ */
+                               background: -o-linear-gradient(top,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* Opera 11.10+ */
+                               background: -ms-linear-gradient(top,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* IE10+ */
+                               background: linear-gradient(to bottom,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* W3C */
+                               filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff3', endColorstr='#e6efc4',GradientType=0 ); /* IE6-9 */
+}
+
+div.loader{
+    text-align: center;
+    /* float: right; */
+    /* margin-left: 12%; */
+    position: absolute;
+    /* margin-top: -8px; */
+    /* right: 1%; */
+    /* margin-right: 50px; */
+    position: relative;
+    /* display: none; */
+    margin: auto;
+}
+
+.loader img{
+
+    /* height: 8%; */
+
+
+    /* width: 116%; */
+
+    width: 100px;
+
+    display: none;
+
+}

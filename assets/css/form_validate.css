@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 19, 2014, 8:41:21 PM
+    Author     : Codelord
+*/
+
+
+.sc_infobox { text-align: center; padding: 9px 10px 9px; text-transform: capitalize; font-size: 12px; line-height: 15px; margin: 0 0 15px 0; font-weight:bold; position:relative; margin: 25px;}
+.sc_infobox_style_regular { color: #727272; border: 1px solid #ddd;
+                            background: rgb(255,255,255); /* Old browsers */
+                            background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(245,245,245,1) 100%); /* FF3.6+ */
+                            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(245,245,245,1))); /* Chrome,Safari4+ */
+                            background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(245,245,245,1) 100%); /* Chrome10+,Safari5.1+ */
+                            background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(245,245,245,1) 100%); /* Opera 11.10+ */
+                            background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(245,245,245,1) 100%); /* IE10+ */
+                            background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(245,245,245,1) 100%); /* W3C */
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f5f5',GradientType=0 ); /* IE6-9 */
+}
+.sc_infobox_style_info { color: #bdae45; border: 1px solid #efda72;
+                         background: rgb(254,254,253); /* Old browsers */
+                         background: -moz-linear-gradient(top,  rgba(254,254,253,1) 0%, rgba(251,246,226,1) 100%); /* FF3.6+ */
+                         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,254,253,1)), color-stop(100%,rgba(251,246,226,1))); /* Chrome,Safari4+ */
+                         background: -webkit-linear-gradient(top,  rgba(254,254,253,1) 0%,rgba(251,246,226,1) 100%); /* Chrome10+,Safari5.1+ */
+                         background: -o-linear-gradient(top,  rgba(254,254,253,1) 0%,rgba(251,246,226,1) 100%); /* Opera 11.10+ */
+                         background: -ms-linear-gradient(top,  rgba(254,254,253,1) 0%,rgba(251,246,226,1) 100%); /* IE10+ */
+                         background: linear-gradient(to bottom,  rgba(254,254,253,1) 0%,rgba(251,246,226,1) 100%); /* W3C */
+                         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefd', endColorstr='#fbf6e2',GradientType=0 ); /* IE6-9 */
+}
+.sc_infobox_style_success { color: #94aa5f; border: 1px solid #c8dc88;
+                            background: rgb(252,255,243); /* Old browsers */
+                            background: -moz-linear-gradient(top,  rgba(252,255,243,1) 0%, rgba(230,239,196,1) 100%); /* FF3.6+ */
+                            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,243,1)), color-stop(100%,rgba(230,239,196,1))); /* Chrome,Safari4+ */
+                            background: -webkit-linear-gradient(top,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* Chrome10+,Safari5.1+ */
+                            background: -o-linear-gradient(top,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* Opera 11.10+ */
+                            background: -ms-linear-gradient(top,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* IE10+ */
+                            background: linear-gradient(to bottom,  rgba(252,255,243,1) 0%,rgba(230,239,196,1) 100%); /* W3C */
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff3', endColorstr='#e6efc4',GradientType=0 ); /* IE6-9 */
+}
+.sc_infobox_style_error {color: #f6eaea;
+                         border: 1px solid #A83232;
+                         border-radius: 10px;
+                         background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #FA8C8C), color-stop(0.8, #A83232) );
+                         background-image: -o-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                         background-image: -moz-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                         background-image: -webkit-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                         background-image: -ms-linear-gradient(bottom, #FA8C8C 0%, #A83232 80%);
+                         background-image: linear-gradient(to bottom, #FA8C8C 0%, #A83232 80%);
+}
+.sc_infobox_style_result { color: #94adb9; border: 1px solid #ccdae0;
+                           background: rgb(247,251,252); /* Old browsers */
+                           background: -moz-linear-gradient(top,  rgba(247,251,252,1) 0%, rgba(233,247,254,1) 100%); /* FF3.6+ */
+                           background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(247,251,252,1)), color-stop(100%,rgba(233,247,254,1))); /* Chrome,Safari4+ */
+                           background: -webkit-linear-gradient(top,  rgba(247,251,252,1) 0%,rgba(233,247,254,1) 100%); /* Chrome10+,Safari5.1+ */
+                           background: -o-linear-gradient(top,  rgba(247,251,252,1) 0%,rgba(233,247,254,1) 100%); /* Opera 11.10+ */
+                           background: -ms-linear-gradient(top,  rgba(247,251,252,1) 0%,rgba(233,247,254,1) 100%); /* IE10+ */
+                           background: linear-gradient(to bottom,  rgba(247,251,252,1) 0%,rgba(233,247,254,1) 100%); /* W3C */
+                           filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#e9f7fe',GradientType=0 ); /* IE6-9 */
+}
+.sc_infobox_closeable:after { content: ""; text-transform: none; display: block; position: absolute; top: 12px; right: 10px; width: 9px; height: 9px; background: url(../images/close_message_button.gif) 0 0 no-repeat;}
+.sc_infobox_style_regular:after 	{ background-position: 0 0;}
+.sc_infobox_style_info:after 	{ background-position: 0 -9px;}
+.sc_infobox_style_success:after 	{ background-position: 0 -18px;}
+.sc_infobox_style_error:after 	{ background-position: 0 -27px;}
+.sc_infobox_style_result:after 	{ background-position: 0 -36px;}
+
+.loader{
+    align:center;
+    float: left;
+    /* margin-left: 51%; */
+    position: absolute;
+    margin-top: -5px;
+    /* right: 1%; */
+    width: 30%;
+}
+
+.loader img{
+
+    /* height: 9%; */
+
+
+    width: 37%;
+
+}
