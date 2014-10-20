@@ -342,7 +342,10 @@ jQuery(window).load(function() {
      */
     function  add_Admin() {
 
-        jQuery(".loader img").fadeIn(100);
+        //jQuery(".loader img").fadeIn(100);
+        
+        
+        
         jQuery('.add_admins .result').removeAttr('style');
         jQuery.post('WebServices/add_Admin.php',
                 {
@@ -358,7 +361,7 @@ jQuery(window).load(function() {
                             .toggleClass('sc_infobox_style_error', false)
                             .toggleClass('sc_infobox_style_success', false);
                     if (rez.success == 1) {
-                        jQuery('.add_admins .result').addClass('sc_infobox_style_success').html('Device Added Successfully !');
+                        jQuery('.add_admins .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
                         setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');", 2000);
 
                         jQuery('#a_name').val('');
@@ -366,9 +369,9 @@ jQuery(window).load(function() {
                         jQuery('#source').val('');
                         
 
-//                        setTimeout('window.location.href = "http://adminpea.openinfotech.org/sign-in.php";', 1000);
+//                       
                     } else if (rez.success == -1) {
-                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
+                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
 
 
                         jQuery("#a_name").toggleClass("error_fields_class", true);
@@ -376,7 +379,7 @@ jQuery(window).load(function() {
 
 
                     } else {
-                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
+                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
                     }
                     jQuery('.add_admins .result').fadeIn(500);
                     setTimeout("jQuery('.add_admins .result').fadeOut()", 6000);
@@ -769,7 +772,7 @@ jQuery(window).load(function() {
     
     // Update Password ...
     
-    jQuery('.Updt_Pass #hit_1').click(function(e) {
+    jQuery('.chng_pass #ch_pass').click(function(e) {
 
         console.log('click');
         Check_Pass();
@@ -778,7 +781,7 @@ jQuery(window).load(function() {
     });
     // Check Info to Update ..
     function Check_Pass() {
-        var error = formValidate(jQuery(".Updt_Pass"), {
+        var error = formValidate(jQuery(".chng_pass"), {
             error_message_show: true,
             error_message_time: 5000,
             error_message_class: "sc_infobox sc_infobox_style_error",
@@ -786,19 +789,19 @@ jQuery(window).load(function() {
             exit_after_first_error: true,
             rules: [
                 {
-                    field: "O_Password",
+                    field: "o_pass",
                     min_length: {value: 1, message: "The Password field can't be empty"},
                     max_length: {value: 20, message: "To long password"}
                 }, 
                 {
-                    field: "N_Password",
+                    field: "n_pass",
                     min_length: {value: 1, message: "The Password field cant be empty"},
                     max_length: {value: 20, message: "To long password"}
                 }, 
                 {
-                    field: "C_Password",
+                    field: "c_pass",
                     min_length: {value: 1, message: "The Password field cant be empty"},
-                    equal_to: {value: 'N_Password', message: "The passwords in both fields are not equal"}
+                    equal_to: {value: 'n_pass', message: "The passwords in both fields are not equal"}
                 }
             ]
         });
@@ -811,22 +814,22 @@ jQuery(window).load(function() {
     }
     function  Update_Pass() {
 
-        jQuery(".Updt_Pass .loader img").fadeIn(100);
-        jQuery('.Updt_Pass .result').removeAttr('style');
-        jQuery.post('http://adminpea.openinfotech.org/webservice/Updt_Pass.php', 
+        jQuery(".chng_pass .loader img").fadeIn(100);
+        jQuery('.chng_pass .result').removeAttr('style');
+        jQuery.post('WebServices/Updt_Pass.php', 
                 {
-                    O_Password: jQuery('#O_Password').val(),
-                    N_Password: jQuery('#N_Password').val(),
+                    O_Password: jQuery('#o_pass').val(),
+                    N_Password: jQuery('#n_pass').val(),
                 },
         function(rez) {
 
 
 //            var rez = JSON.parse(response);
-            jQuery('.Updt_Pass .result')
+            jQuery('.chng_pass .result')
                     .toggleClass('sc_infobox_style_error', false)
                     .toggleClass('sc_infobox_style_success', false);
             if (rez.success == 1) {
-                jQuery('.Updt_Pass .result').addClass('sc_infobox_style_success').html('Profile Updated Successfully!');
+                jQuery('.chng_pass .result').addClass('sc_infobox_style_success').html('Password changed Successfully!');
 //                setTimeout("jQuery('Updt_Info').trigger('click'); jQuery('.Updt_Info').trigger('click');", 2000);
 
                 // jQuery('#Problem_Title').val('');
@@ -835,14 +838,14 @@ jQuery(window).load(function() {
 
                 setTimeout('window.location.reload();', 500);
             } else {
-                jQuery('.Updt_Pass .result').addClass('sc_infobox_style_error').html('Invalied Password !');
+                jQuery('.chng_pass .result').addClass('sc_infobox_style_error').html('Invalied Password !');
             }
 
 //            console.log("session destroys");
 //            location.reload();
 //            
 //            
-            jQuery(".Updt_Pass .loader img").fadeOut(200);
+            jQuery(".chng_pass .loader img").fadeOut(200);
         }, 'json');
 
 

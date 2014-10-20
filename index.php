@@ -107,7 +107,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <div id="container">
 
                     <div class="row-fluid">
-                        <div class="span5">
+                        <div class="span6">
                             <div class="grid simple">
                                 <div class="grid-title no-border">
                                     <h4 style="color: #0090D9;">Add <span class="semi-bold" style="color: #0aa699">&nbsp;New Admin</span></h4>
@@ -173,7 +173,68 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                 </div>
                             </div>
                         </div>
+                        
+                       
+                        <div class="span6">
+                            <div class="grid simple">
+                                <div class="grid-title no-border">
+                                    <h4 style="color: #852b99;">Change <span class="semi-bold" style="color: #0aa699">&nbsp;Your Password</span></h4>
+                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
+                                </div>
+                                
+                                <div class="grid-body no-border">
+                                    <div class="chng_pass">
+                                    <form action="" id="admin-form">
+                                        <div>
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                    <h5><span class="semi-bold">Old Password :</span></h5>
+                                                </div>
+                                                <div class="span7">
+                                                    <input type="password" style="width:93%" name="o_pass" id="o_pass" />
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div>
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                    <h5><span class="semi-bold">New Password :</span></h5>
+                                                </div>
+                                                <div class="span7">
+                                                    <input type="password" style="width:93%" name="n_pass" id="n_pass" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                    <h5><span class="semi-bold">Enter Again :</span></h5>
+                                                </div>
+                                                <div class="span7">
+                                                    <input type="password" style="width:93%" name="c_pass" id="c_pass" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="result sc_infobox " style="display: none;"></div>
+                                        <footer>
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
+                                                </div>
+                                                <div class="span7">
+                                                    <button type="button" id="ch_pass" class="btn btn-success btn-cons" style="margin-right: ">Change</button>
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>		
                 </div>
             </div> 
