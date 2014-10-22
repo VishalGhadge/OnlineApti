@@ -70,7 +70,7 @@ if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
 
 // This tells the web browser that your content is encoded using UTF-8 
 // and that it should submit content back to you using UTF-8 
-header('Content-Type: text/html; charset=utf-8');
+//header('Content-Type: text/html; charset=utf-8');
 
 // This initializes a session.  Sessions are used to store information about 
 // a visitor from one web page visit to the next.  Unlike a cookie, the information is 

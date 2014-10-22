@@ -113,128 +113,130 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                     <h4 style="color: #0090D9;">Add <span class="semi-bold" style="color: #0aa699">&nbsp;New Admin</span></h4>
                                     <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
                                 </div>
-                                
+
                                 <div class="grid-body no-border">
                                     <div class="add_admins">
-                                    <form action="" id="admin-form">
-                                        <div>
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                    <h5><span class="semi-bold">Admin Name :</span></h5>
-                                                </div>
-                                                <div class="span7">
-                                                    <input type="text" style="width:93%" name="a_name" id="a_name" />
+                                        <form action="" id="admin-form">
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Admin Name :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="text" style="width:93%" name="a_name" id="a_name" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div>
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                    <h5><span class="semi-bold">Temporary Pass :</span></h5>
-                                                </div>
-                                                <div class="span7">
-                                                    <input type="password" style="width:93%" name="password" id="password" />
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Temporary Pass :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="password" style="width:93%" name="password" id="password" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div style="margin-top: 5px;">
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                    <h5><span class="semi-bold">Select Department :</span></h5>
-                                                </div>
-                                                <div class="span7">
-                                                    <select id="source" style="width:100%" tabindex="-1" class="select2-offscreen" name="field">
-                                                        <optgroup label="Science Field">
-                                                            <option value="1">Computer_Sci
-                                                            </option>
-                                                        </optgroup>
-                                                        <optgroup label="Math Field">
-                                                            <option value="2">Mathematics
-                                                            </option></optgroup>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="result sc_infobox " style="display: none;"></div>
-                                        <footer>
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
-                                                </div>
-                                                <div class="span7">
-                                                    <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-right: ">Add</button>
+                                            <div style="margin-top: 5px;">
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Select Department :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <select id="source" style="width:100%" tabindex="-1" class="select2-offscreen" name="field">
+                                                            <optgroup label="Science Field">
+                                                                <option id="sel_1" value="1">Computer_Sci</option>
+                                                            </optgroup>
+                                                            <optgroup label="Math Field">
+                                                                <option id="sel_2" value="2" >Mathematics</option>
+                                                            </optgroup>
+                                                        </select>
+                                                        <script type="text/javascript">
+                                                            document.getElementById('sel_2').valueOf('selected');
+                                                        </script>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </footer>
-                                    </form>
-                                </div>
+                                            <div class="result sc_infobox " style="display: none;"></div>
+                                            <footer>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-right: ">Add</button>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                       
+
+
                         <div class="span6">
                             <div class="grid simple">
                                 <div class="grid-title no-border">
                                     <h4 style="color: #852b99;">Change <span class="semi-bold" style="color: #0aa699">&nbsp;Your Password</span></h4>
                                     <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
                                 </div>
-                                
+
                                 <div class="grid-body no-border">
                                     <div class="chng_pass">
-                                    <form action="" id="admin-form">
-                                        <div>
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                    <h5><span class="semi-bold">Old Password :</span></h5>
-                                                </div>
-                                                <div class="span7">
-                                                    <input type="password" style="width:93%" name="o_pass" id="o_pass" />
+                                        <form action="" id="admin-form">
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Old Password :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="password" style="width:93%" name="o_pass" id="o_pass" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div>
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                    <h5><span class="semi-bold">New Password :</span></h5>
-                                                </div>
-                                                <div class="span7">
-                                                    <input type="password" style="width:93%" name="n_pass" id="n_pass" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div>
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                    <h5><span class="semi-bold">Enter Again :</span></h5>
-                                                </div>
-                                                <div class="span7">
-                                                    <input type="password" style="width:93%" name="c_pass" id="c_pass" />
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">New Password :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="password" style="width:93%" name="n_pass" id="n_pass" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <div class="result sc_infobox " style="display: none;"></div>
-                                        <footer>
-                                            <div class="row-fluid">
-                                                <div class="span4">
-                                                <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
-                                                </div>
-                                                <div class="span7">
-                                                    <button type="button" id="ch_pass" class="btn btn-success btn-cons" style="margin-right: ">Change</button>
+
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Enter Again :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="password" style="width:93%" name="c_pass" id="c_pass" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </footer>
-                                    </form>
-                                </div>
+
+                                            <div class="result sc_infobox " style="display: none;"></div>
+                                            <footer>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <button type="button" id="ch_pass" class="btn btn-success btn-cons" style="margin-right: ">Change</button>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>		
                 </div>
             </div> 

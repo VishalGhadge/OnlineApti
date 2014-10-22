@@ -3,7 +3,7 @@ require './util.php';
 
 //Start session
 session_start();
-
+error_reporting(E_ERROR | E_PARSE);
 //Check whether the session variable SESS_MEMBER_ID is present or not
 if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) {
     ?>
@@ -17,8 +17,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     $Admin_Name = $_SESSION['sess_Name'];
     $Admin_Id = $_SESSION['sess_Admin_Id'];
     $dept = $_SESSION['Dept'];
-
-    //include './get-home-page-overview-data.php';
+   
 }
 ?>
 
@@ -102,232 +101,10 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
             <div class="clearfix"></div>
             <div class="content">  
                 <div class="page-title">	
-                    <h3>Admin </h3>		
+                    <h3>Set Paper </h3>		
                 </div>
                 <div id="container">
-
-
-                    <div class="row-fluid">
-
-                        <!-- 1st Question  -->
-                        <div class="span6">
-                            <div class="grid simple">
-                                <div class="grid-title no-border">
-                                    <h4 style="color: #0090D9;">Question No :  <span class="semi-bold" style="color: #0aa699">&nbsp;1</span></h4>
-                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
-                                </div>
-
-                                <div class="grid-body no-border">
-                                    <div class="Question_1">
-                                        <form action="" id="admin-form">
-                                            <div class="grid-body no-border">
-                                                <div class="row-fluid">
-                                                    <textarea id="q1" placeholder="Enter Question 1 ..." class="span12" rows="3"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="row-fluid">
-                                                <div class="span1">
-                                                    <h5><span class="semi-bold">A :</span></h5>
-                                                </div>
-                                                <div class="span9">
-                                                    <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                                </div>
-                                            </div>
-                                            <div class="row-fluid">
-                                                <div class="span1">
-                                                    <h5><span class="semi-bold">B :</span></h5>
-                                                </div>
-                                                <div class="span9">
-                                                    <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                                </div>
-                                            </div>
-                                            <div class="row-fluid">
-                                                <div class="span1">
-                                                    <h5><span class="semi-bold">C :</span></h5>
-                                                </div>
-                                                <div class="span9">
-                                                    <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                                </div>
-                                            </div>
-                                            <div class="row-fluid">
-                                                <div class="span1">
-                                                    <h5><span class="semi-bold">D :</span></h5>
-                                                </div>
-                                                <div class="span9">
-                                                    <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                                </div>
-                                            </div>
-                                            </br>
-                                            <div class="result sc_infobox " style="display: none;"></div>
-                                            <footer>
-                                                <div class="row-fluid">
-                                                    <div class="span3">
-                                                        <h5><span class="semi-bold">Correct Choice :</span></h5>
-                                                    </div>
-                                                    <div class="span4">
-                                                        <select id="choice" name="choice" style="width: 40%;">
-                                                            <option value="1">A</option>
-                                                            <option value="2">B</option>
-                                                            <option value="3">C</option>
-                                                            <option value="4">D</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="span4">
-                                                        <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-right: ">Save</button>
-                                                    </div>
-                                                </div>
-                                            </footer>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- 2st Question  -->
-                        <div class="span6">
-                            <div class="grid simple">
-                                <div class="grid-title no-border">
-                                    <h4 style="color: #0090D9;">Question No : <span class="semi-bold" style="color: #0aa699">&nbsp;2</span></h4>
-                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
-                                </div>
-
-                                <div class="grid-body no-border">
-                                    <div class="Question_2">
-                                        <div class="grid-body no-border">
-                                            <div class="row-fluid">
-                                                <textarea id="q1" placeholder="Enter Question 2 ..." class="span12" rows="3"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            <div class="span1">
-                                                <h5><span class="semi-bold">A :</span></h5>
-                                            </div>
-                                            <div class="span9">
-                                                <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            <div class="span1">
-                                                <h5><span class="semi-bold">B :</span></h5>
-                                            </div>
-                                            <div class="span9">
-                                                <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            <div class="span1">
-                                                <h5><span class="semi-bold">C :</span></h5>
-                                            </div>
-                                            <div class="span9">
-                                                <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            <div class="span1">
-                                                <h5><span class="semi-bold">D :</span></h5>
-                                            </div>
-                                            <div class="span9">
-                                                <input type="text" style="width:93%" name="a_name" id="a_name" />
-                                            </div>
-                                        </div>
-                                        </br>
-                                        <div class="result sc_infobox " style="display: none;"></div>
-                                        <footer>
-                                            <div class="row-fluid">
-                                                <div class="span3">
-                                                    <h5><span class="semi-bold">Correct Choice :</span></h5>
-                                                </div>
-                                                <div class="span4">
-                                                    <select id="choice" name="choice" style="width: 40%;">
-                                                        <option value="1">A</option>
-                                                        <option value="2">B</option>
-                                                        <option value="3">C</option>
-                                                        <option value="4">D</option>
-                                                    </select>
-                                                </div>
-                                                <div class="span4">
-                                                    <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-right: ">Save</button>
-                                                </div>
-                                            </div>
-                                        </footer>
-                                    </div>
-
-                                </div>
-                            </div> 
-                        </div>
-
-                    </div>
-
-                    <div class="row-fluid">
-                        <!-- 3rd Question  -->
-                        <div class="span6">
-                            <div class="grid simple">
-                                <div class="grid-title no-border">
-                                    <h4 style="color: #0090D9;">Question No : <span class="semi-bold" style="color: #0aa699">&nbsp;3</span></h4>
-                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
-                                </div>
-
-                                <div class="grid-body no-border">
-                                    <div class="add_admins">
-                                        <form action="" id="admin-form">
-
-
-
-
-                                            <div class="result sc_infobox " style="display: none;"></div>
-                                            <footer>
-                                                <div class="row-fluid">
-                                                    <div class="span4">
-                                                        <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
-                                                    </div>
-                                                    <div class="span7">
-                                                        <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-right: ">Add</button>
-                                                    </div>
-                                                </div>
-                                            </footer>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div> 
-                        </div>
-
-                        <!-- 4rd Question  -->
-                        <div class="span6">
-                            <div class="grid simple">
-                                <div class="grid-title no-border">
-                                    <h4 style="color: #0090D9;">Question No : <span class="semi-bold" style="color: #0aa699">&nbsp;4</span></h4>
-                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
-                                </div>
-
-                                <div class="grid-body no-border">
-                                    <div class="add_admins">
-                                        <form action="" id="admin-form">
-
-
-
-
-                                            <div class="result sc_infobox " style="display: none;"></div>
-                                            <footer>
-                                                <div class="row-fluid">
-                                                    <div class="span4">
-                                                        <div class="loader"><img src="assets/img/loader.GIF" style="display: none;"></div>
-                                                    </div>
-                                                    <div class="span7">
-                                                        <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-right: ">Add</button>
-                                                    </div>
-                                                </div>
-                                            </footer>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div> 
-                        </div>
-
-                    </div>
-                    <!-- END PAGE --> 
+                        <?php include './WebServices/get_Question.php'; ?>
                 </div>
 
 
