@@ -39,8 +39,22 @@
                 <div class="span12">
                     <div class="grid simple">
                         <div class="grid-title no-border">
-                            <h4 style="color: #0090D9;">Question No :  <span class="semi-bold" style="color: #0aa699">&nbsp;<?php echo $x; ?>&nbsp;<?php echo $row['time_stamp']?></span></h4>
-                            <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
+                            <div class="row-fluid">
+                                <div class="span4">
+                                    <h4 style="color: #0090D9;">Question No :  <span class="semi-bold" style="color: #0aa699">&nbsp;<?php echo $x; ?>&nbsp;</span></h4>
+                                </div>
+                                <div class="span4">
+                                    <h4 style="color: #0090D9">Last Update : <?php echo $row['time_stamp']; ?></h4>
+                                </div>
+                                <div class="span4">
+                                    <h4 style="color: #0090D9">by-&nbsp;&nbsp;<?php echo $row['Name']; ?></h4>
+                                </div>
+                            <div class="tools"> 
+                                <a class="collapse" href="javascript:;"></a> 
+                                <a class="config" data-toggle="modal" href="#grid-config"></a> 
+                                <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> 
+                            </div>
+                            </div>
                         </div>
 
                         <div class="grid-body no-border">
@@ -48,7 +62,7 @@
                                 <form action="" id="admin-form">
                                     <div class="grid-body no-border">
                                         <div class="row-fluid">
-                                            <textarea id="q<?php echo $x; ?>" name="q<?php echo $x; ?>"  class="span12" rows="3">
+                                            <textarea id="q<?php echo $x; ?>" name="q<?php echo $x; ?>" class="span6" rows="5">
                                                 <?php echo $row['Question']; ?>
                                             </textarea>
                                         </div>

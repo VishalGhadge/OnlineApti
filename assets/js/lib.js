@@ -195,7 +195,7 @@ jQuery(window).load(function() {
             return false;
         }
     });
-    
+
     jQuery('.admin_login #enter').click(function(e) {
 
         AdminLogin();
@@ -319,7 +319,7 @@ jQuery(window).load(function() {
                     field: "a_name",
                     min_length: {value: 1, message: "The Name cant be empty !!"},
                     max_length: {value: 60, message: "The Name is too laong"}
-                }, 
+                },
                 {
                     field: "password",
                     min_length: {value: 5, message: "The password can\'t be empty and shorter then 5 characters"},
@@ -343,9 +343,9 @@ jQuery(window).load(function() {
     function  add_Admin() {
 
         //jQuery(".loader img").fadeIn(100);
-        
-        
-        
+
+
+
         jQuery('.add_admins .result').removeAttr('style');
         jQuery.post('WebServices/add_Admin.php',
                 {
@@ -353,43 +353,43 @@ jQuery(window).load(function() {
                     password: jQuery('#password').val(),
                     field: jQuery('#source').val()
                 },
-                function(rez) {
+        function(rez) {
 
 
 //            var rez = JSON.parse(response);
-                    jQuery('.add_admins .result')
-                            .toggleClass('sc_infobox_style_error', false)
-                            .toggleClass('sc_infobox_style_success', false);
-                    if (rez.success == 1) {
-                        jQuery('.add_admins .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
-                        setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');", 2000);
+            jQuery('.add_admins .result')
+                    .toggleClass('sc_infobox_style_error', false)
+                    .toggleClass('sc_infobox_style_success', false);
+            if (rez.success == 1) {
+                jQuery('.add_admins .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
+                setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');", 2000);
 
-                        jQuery('#a_name').val('');
-                        jQuery('#password').val('');
-                        jQuery('#source').val('');
-                        
+                jQuery('#a_name').val('');
+                jQuery('#password').val('');
+                jQuery('#source').val('');
+
 
 //                       
-                    } else if (rez.success == -1) {
-                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+            } else if (rez.success == -1) {
+                jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
 
 
-                        jQuery("#a_name").toggleClass("error_fields_class", true);
+                jQuery("#a_name").toggleClass("error_fields_class", true);
 
 
 
-                    } else {
-                        jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
-                    }
-                    jQuery('.add_admins .result').fadeIn(500);
-                    setTimeout("jQuery('.add_admins .result').fadeOut()", 6000);
+            } else {
+                jQuery('.add_admins .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+            }
+            jQuery('.add_admins .result').fadeIn(500);
+            setTimeout("jQuery('.add_admins .result').fadeOut()", 6000);
 
 //            console.log("session destroys");
 //            location.reload();
 //            
 //            
-                    jQuery(".loader img").fadeOut(200);
-                }, 'json');
+            jQuery(".loader img").fadeOut(200);
+        }, 'json');
 
 
 
@@ -689,9 +689,9 @@ jQuery(window).load(function() {
 
 
     }
-    
+
     // Update Account Info
-    
+
     jQuery('.Updt_Acc #hit').click(function(e) {
 
         console.log('click');
@@ -712,7 +712,7 @@ jQuery(window).load(function() {
                     field: "Usr_NM",
                     min_length: {value: 1, message: "The User Name can't be empty"},
                     max_length: {value: 60, message: "Plz Enter short User Name.."}
-                }, 
+                },
                 {
                     field: "Password",
                     min_length: {value: 1, message: "The Password field cant be empty"},
@@ -731,47 +731,47 @@ jQuery(window).load(function() {
 
         jQuery(".Updt_Acc .loader img").fadeIn(100);
         jQuery('.Updt_Acc .result').removeAttr('style');
-        jQuery.post('http://adminpea.openinfotech.org/webservice/Updt_AccInfo.php', 
+        jQuery.post('http://adminpea.openinfotech.org/webservice/Updt_AccInfo.php',
                 {
                     Usr_NM: jQuery('#Usr_NM').val(),
                     Party_ID: jQuery('#Party_ID').val(),
                     Position_ID: jQuery('#Position_ID').val(),
                     Password: jQuery('#Acc_Password').val(),
                 },
-        function(rez) {
+                function(rez) {
 
 
 //            var rez = JSON.parse(response);
-            jQuery('.Updt_Acc .result')
-                    .toggleClass('sc_infobox_style_error', false)
-                    .toggleClass('sc_infobox_style_success', false);
-            if (rez.success == 1) {
-                jQuery('.Updt_Acc .result').addClass('sc_infobox_style_success').html('Profile Updated Successfully!');
+                    jQuery('.Updt_Acc .result')
+                            .toggleClass('sc_infobox_style_error', false)
+                            .toggleClass('sc_infobox_style_success', false);
+                    if (rez.success == 1) {
+                        jQuery('.Updt_Acc .result').addClass('sc_infobox_style_success').html('Profile Updated Successfully!');
 //                setTimeout("jQuery('Updt_Info').trigger('click'); jQuery('.Updt_Info').trigger('click');", 2000);
 
-                // jQuery('#Problem_Title').val('');
-                //jQuery('#Problem_Text').val('');
+                        // jQuery('#Problem_Title').val('');
+                        //jQuery('#Problem_Text').val('');
 
 
-                setTimeout('window.location.reload();', 500);
-            } else {
-                jQuery('.Updt_Acc .result').addClass('sc_infobox_style_error').html('Invalied Password !');
-            }
+                        setTimeout('window.location.reload();', 500);
+                    } else {
+                        jQuery('.Updt_Acc .result').addClass('sc_infobox_style_error').html('Invalied Password !');
+                    }
 
 //            console.log("session destroys");
 //            location.reload();
 //            
 //            
-            jQuery(".Updt_Acc .loader img").fadeOut(200);
-        }, 'json');
+                    jQuery(".Updt_Acc .loader img").fadeOut(200);
+                }, 'json');
 
 
 
     }
-    
-    
+
+
     // Update Password ...
-    
+
     jQuery('.chng_pass #ch_pass').click(function(e) {
 
         console.log('click');
@@ -792,12 +792,12 @@ jQuery(window).load(function() {
                     field: "o_pass",
                     min_length: {value: 1, message: "The Password field can't be empty"},
                     max_length: {value: 20, message: "To long password"}
-                }, 
+                },
                 {
                     field: "n_pass",
                     min_length: {value: 1, message: "The Password field cant be empty"},
                     max_length: {value: 20, message: "To long password"}
-                }, 
+                },
                 {
                     field: "c_pass",
                     min_length: {value: 1, message: "The Password field cant be empty"},
@@ -816,42 +816,42 @@ jQuery(window).load(function() {
 
         jQuery(".chng_pass .loader img").fadeIn(100);
         jQuery('.chng_pass .result').removeAttr('style');
-        jQuery.post('WebServices/Updt_Pass.php', 
+        jQuery.post('WebServices/Updt_Pass.php',
                 {
                     O_Password: jQuery('#o_pass').val(),
                     N_Password: jQuery('#n_pass').val(),
                 },
-        function(rez) {
+                function(rez) {
 
 
 //            var rez = JSON.parse(response);
-            jQuery('.chng_pass .result')
-                    .toggleClass('sc_infobox_style_error', false)
-                    .toggleClass('sc_infobox_style_success', false);
-            if (rez.success == 1) {
-                jQuery('.chng_pass .result').addClass('sc_infobox_style_success').html('Password changed Successfully!');
+                    jQuery('.chng_pass .result')
+                            .toggleClass('sc_infobox_style_error', false)
+                            .toggleClass('sc_infobox_style_success', false);
+                    if (rez.success == 1) {
+                        jQuery('.chng_pass .result').addClass('sc_infobox_style_success').html('Password changed Successfully!');
 //                setTimeout("jQuery('Updt_Info').trigger('click'); jQuery('.Updt_Info').trigger('click');", 2000);
 
-                // jQuery('#Problem_Title').val('');
-                //jQuery('#Problem_Text').val('');
+                        // jQuery('#Problem_Title').val('');
+                        //jQuery('#Problem_Text').val('');
 
 
-                setTimeout('window.location.reload();', 500);
-            } else {
-                jQuery('.chng_pass .result').addClass('sc_infobox_style_error').html('Invalied Password !');
-            }
+                        setTimeout('window.location.reload();', 500);
+                    } else {
+                        jQuery('.chng_pass .result').addClass('sc_infobox_style_error').html('Invalied Password !');
+                    }
 
 //            console.log("session destroys");
 //            location.reload();
 //            
 //            
-            jQuery(".chng_pass .loader img").fadeOut(200);
-        }, 'json');
+                    jQuery(".chng_pass .loader img").fadeOut(200);
+                }, 'json');
 
 
 
     }
-    
+
 
     jQuery('.add_opponents_form #enter').click(function(e) {
 
@@ -1083,7 +1083,7 @@ jQuery(window).load(function() {
             }
         });
 
-       
+
         if (error_msg !== '' && opt.error_message_show) {
             error_msg_box = form.find(".result");
             if (error_msg_box.length === 0) {
@@ -1100,19 +1100,19 @@ jQuery(window).load(function() {
         }
         return error_msg !== '';
     }
-    
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
-            $('#blah')
-                .attr('src', e.target.result)
-                .width(150)
-                .height(200);
+            reader.onload = function(e) {
+                $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
             };
 
             reader.readAsDataURL(input.files[0]);
         }
-    }                               
+    }
 });

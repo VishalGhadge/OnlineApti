@@ -17,7 +17,6 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     $Admin_Name = $_SESSION['sess_Name'];
     $Admin_Id = $_SESSION['sess_Admin_Id'];
     $dept = $_SESSION['Dept'];
-   
 }
 ?>
 
@@ -104,10 +103,180 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                     <h3>Set Paper </h3>		
                 </div>
                 <div id="container">
-                        <?php include './WebServices/get_Question.php'; ?>
+                    <?php include './WebServices/get_Question11.php'; ?>
                 </div>
 
 
+                
+                <!-- END CORE TEMPLATE JS -->
+
+                <script type="text/javascript">
+        function getIndex(x) {
+
+            var error_msg_box = null;
+
+            console.log('click');
+            Check_Question();
+            e.preventDefault();
+            return false;
+            // Check Info to Update ..
+            function Check_Question() {
+                var error = formValidate(jQuery(".Question_" + x + " form"), {
+                    error_message_show: true,
+                    error_message_time: 5000,
+                    error_message_class: "sc_infobox sc_infobox_style_error",
+                    error_fields_class: "error_fields_class",
+                    exit_after_first_error: true,
+                    rules: [
+                        {
+                            field: "q" + x,
+                            min_length: {value: 1, message: "Plz Enter Question...!"},
+                            // max_length: {value: 60, message: "Plz Enter short User Name.."}
+                        },
+                        {
+                            field: "a_" + x,
+                            min_length: {value: 1, message: "You must Enter Any Value.."},
+                            //max_length: {value: 10, message: "choose proper date"}
+                        }
+                        ,
+                        {
+                            field: "b_" + x,
+                            min_length: {value: 1, message: "You must Enter Any Value.."},
+                            //max_length: {value: 10, message: "choose proper date"}
+                        }
+                    ]
+                });
+
+                if (!error) {
+                    //            document.forms['registration_form'].submit();
+
+                    Update_Question();
+                }
+            }
+            function  Update_Question() {
+
+                //jQuery(".Question_" + x + " .loader img").fadeIn(100);
+                jQuery('.Question_' + x + ' .result').removeAttr('style');
+                jQuery.post('WebServices/Updt_Ques.php',
+                        {
+                            qno: x,
+                            Que: jQuery('#q' + x).val(),
+                            op_a: jQuery('#a_' + x).val(),
+                            op_b: jQuery('#b_' + x).val(),
+                            op_c: jQuery('#c_' + x).val(),
+                            op_d: jQuery('#d_' + x).val(),
+                            ch: jQuery('#choice_' + x).val(),
+                            Exp: jQuery('#Ex' + x).val()
+                        },
+                function(rez) {
+
+
+                    //            var rez = JSON.parse(response);
+                    /*jQuery('.Question_' + x + ' .result')
+                            .toggleClass('sc_infobox_style_error', false)
+                            .toggleClass('sc_infobox_style_success', false);*/
+
+                    if (rez.success == 1) {
+                        jQuery('.Question_' + x + ' .result').addClass('sc_infobox_style_success').html('Question Updated Successfully !');
+                       //jQuery(".Question_" + x + " .loader img").fadeOut(200);
+                        setTimeout('window.location.reload();', 500);
+
+                    } else {
+
+                        jQuery('.Question_' + x + ' .result').addClass('sc_infobox_style_error').html('Updation Failed !');
+                    }
+                    jQuery('.Question_' + x + ' .result').fadeIn(500);
+                    setTimeout("jQuery('.Question_'" + x + "' .result').fadeOut()", 6000);
+
+                    //            console.log("session destroys");
+                    //            location.reload();
+                    //            
+                    //            
+                    
+                }, 'json');
+
+
+
+            }
+
+            function formValidate(form, opt) {
+                "use strict";
+                var error_msg = '';
+                form.find(":input").each(function() {
+                    if (error_msg !== '' && opt.exit_after_first_error) {
+                        return;
+                    }
+                    for (var i = 0; i < opt.rules.length; i++) {
+                        if (jQuery(this).attr("name") === opt.rules[i].field) {
+                            var val = jQuery(this).val();
+                            var error = false;
+                            if (typeof (opt.rules[i].min_length) === 'object') {
+                                if (opt.rules[i].min_length.value > 0 && val.length < opt.rules[i].min_length.value) {
+                                    if (error_msg === '') {
+                                        jQuery(this).get(0).focus();
+                                    }
+                                    error_msg += '<p class="error_item">' + (typeof (opt.rules[i].min_length.message) !== 'undefined' ? opt.rules[i].min_length.message : opt.error_message_text) + '</p>';
+                                    error = true;
+                                }
+                            }
+                            if ((!error || !opt.exit_after_first_error) && typeof (opt.rules[i].max_length) === 'object') {
+                                if (opt.rules[i].max_length.value > 0 && val.length > opt.rules[i].max_length.value) {
+                                    if (error_msg === '') {
+                                        jQuery(this).get(0).focus();
+                                    }
+                                    error_msg += '<p class="error_item">' + (typeof (opt.rules[i].max_length.message) !== 'undefined' ? opt.rules[i].max_length.message : opt.error_message_text) + '</p>';
+                                    error = true;
+                                }
+                            }
+                            if ((!error || !opt.exit_after_first_error) && typeof (opt.rules[i].mask) === 'object') {
+                                if (opt.rules[i].mask.value !== '') {
+                                    var regexp = new RegExp(opt.rules[i].mask.value);
+                                    if (!regexp.test(val)) {
+                                        if (error_msg === '') {
+                                            jQuery(this).get(0).focus();
+                                        }
+                                        error_msg += '<p class="error_item">' + (typeof (opt.rules[i].mask.message) !== 'undefined' ? opt.rules[i].mask.message : opt.error_message_text) + '</p>';
+                                        error = true;
+                                    }
+                                }
+                            }
+                            if ((!error || !opt.exit_after_first_error) && typeof (opt.rules[i].equal_to) === 'object') {
+                                if (opt.rules[i].equal_to.value !== '' && val !== jQuery(jQuery(this).get(0).form[opt.rules[i].equal_to.value]).val()) {
+                                    if (error_msg === '') {
+                                        jQuery(this).get(0).focus();
+                                    }
+                                    error_msg += '<p class="error_item">' + (typeof (opt.rules[i].equal_to.message) !== 'undefined' ? opt.rules[i].equal_to.message : opt.error_message_text) + '</p>';
+                                    error = true;
+                                }
+                            }
+                            if (opt.error_fields_class !== '') {
+                                jQuery(this).toggleClass(opt.error_fields_class, error);
+                            }
+                        }
+                    }
+                });
+
+
+                if (error_msg !== '' && opt.error_message_show) {
+                    error_msg_box = form.find(".result");
+                    if (error_msg_box.length === 0) {
+                        form.append('<div class="result"></div>');
+                        error_msg_box = form.find(".result");
+                    }
+                    if (opt.error_message_class) {
+                        error_msg_box.toggleClass(opt.error_message_class, true);
+                    }
+                    error_msg_box.html(error_msg).fadeIn();
+                    setTimeout(function() {
+                        error_msg_box.fadeOut();
+                    }, opt.error_message_time);
+                }
+                return error_msg !== '';
+            }
+
+        }
+                </script>
+                
                 <!-- BEGIN PAGE LEVEL JS --> 
                 <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
                 <script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -136,11 +305,11 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
                 <script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
                 <!-- END PAGE LEVEL PLUGINS -->
-                <script src="assets/js/form_elements.js" type="text/javascript"></script>
+                
                 <!-- BEGIN PAGE LEVEL SCRIPTS -->
                 <script src="assets/js/core.js" type="text/javascript"></script>
                 <script src="assets/js/demo.js" type="text/javascript"></script>
 
                 <script src="assets/js/lib.js" type="text/javascript"></script>
-                <!-- END CORE TEMPLATE JS -->
+                
             </div></body>
