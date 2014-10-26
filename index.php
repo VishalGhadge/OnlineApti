@@ -86,9 +86,10 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <div class="details-status">
                     <span data-animation-duration="560" data-value="86" class="animate-number"></span>%
                 </div>	
-                <a href="sign-in.php"><i class="icon-off"></i></a></div>
+                <a href="logout.php"><i class="icon-off"></i></a></div>
         </div>
         <!-- END SIDEBAR --> 
+        <?php require './left-menu.php'; ?>
         <!-- BEGIN PAGE CONTAINER-->
         <div class="page-content"> 
             <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -239,12 +240,13 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
 
                     </div>		
                 </div>
+                
             </div> 
         </div>  
-        <!-- END PAGE --> 
+        <!-- END PAGE -->
     </div>
     <!-- BEGIN CHAT --> 
-
+    
     <!-- END CHAT --> 
     <!-- END CONTAINER --> 
 

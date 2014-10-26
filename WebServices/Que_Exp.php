@@ -4,7 +4,7 @@
     require("config.inc.php");
     require("../fpdf17/fpdf.php");
     require("../util.php");
-
+    
     $dept = $_SESSION['Dept'];
 
     //gets user's info based off of a username.
@@ -35,8 +35,11 @@
 
     global $Website_Title;
     global $dept;
+    $Department = 'Department  of '.$dept;
+    $d = $pdf->GetStringWidth($Department) + 6;
     $title = 'Modern College Ganeshkhind Pune - 16';
     $pdf->SetFont('Arial', 'B', 15);
+    $pdf->Image('../assets/img/clg-logo.jpg',10,6,30);
     // Calculate width of title and position
     $w = $pdf->GetStringWidth($Website_Title) + 6;
     $s = $pdf->GetStringWidth($title) + 6;
@@ -55,7 +58,8 @@
     $pdf->SetFont('Arial', 'B', 12);
     $pdf->SetTextColor(5, 98, 115);
     $pdf->SetFillColor(200, 220, 255);
-    $pdf->Cell(190, 10, 'Department  of  ' . $dept, 0, 1, 'L', TRUE);
+    $pdf->SetX((210 - $d) / 2);
+    $pdf->Cell($d, 10,$Department,0, 1,'C');
 
     $x = 1;
 

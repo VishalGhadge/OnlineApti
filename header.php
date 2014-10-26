@@ -6,7 +6,7 @@
                 <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu" class=""> <div class="iconset top-menu-toggle-white"></div> </a> </li>		 
             </ul>
             <!-- BEGIN LOGO -->	
-            
+            <a href="index.php"><img src="assets/img/modern.png" width="130" height="100" class="logo" style="margin-top: auto;" /></a>
             <!-- END LOGO --> 
             <ul class="nav pull-right notifcation-center">	
                 <li class="dropdown" id="header_task_bar"> <a href="index.php" class="dropdown-toggle active" data-toggle=""> <div class="iconset top-home"></div> </a> </li>
@@ -21,26 +21,21 @@
                     <li class="quicklinks"> <a href="http://localhost:81/OnlineApti/index.php" class="" id="layout-condensed-toggle"><div class="iconset top-menu-toggle-dark"></div> </a> </li>        
                     <li class="quicklinks"> <span class="h-seperate"></span></li>
                     <li class="quicklinks"> <a href="#" class=""><div class="iconset top-reload"></div> </a> </li> 
-                    
+
                 </ul>
                 <ul class="nav quick-section">
-                    <h4><p class="text-info" >Department of <?php echo $dept?></p></h4>
+                    <h4><p class="text-info" >Department of <?php echo $dept ?></p></h4>
                 </ul>
             </div>
             <!-- END TOP NAVIGATION MENU -->
             <!-- BEGIN CHAT TOGGLER -->
             <div class="pull-right"> 
                 <div class="chat-toggler">	
-                    <a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-toggle="dropdown" data-original-title="Notifications">
-                        <div class="user-details"> 
-                            <div class="username">
-                               
-                                <?php echo $Admin_Name; ?>									
-                            </div>						
-                        </div> 
-                        
-                    </a>						
-        			
+                    <div class="user-details"> 
+                        <div class="username">
+                            <h4 style="color: #06512F"><span class="semi-bold"><?php echo $Admin_Name; ?></span></h4>									
+                        </div>						
+                    </div> 
                 </div>
                 <ul class="nav quick-section ">
                     <li class="quicklinks"> 
@@ -48,7 +43,7 @@
                             <div class="iconset top-settings-dark "></div> 	
                         </a>
                         <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="dropdownMenu">
-                            <li><a href="profile.php"> My Account</a>
+                            <li><a href="index.php"> My Account</a>
                             </li>
                             <li><a href="calender.html">My Schedules</a>
                             </li>

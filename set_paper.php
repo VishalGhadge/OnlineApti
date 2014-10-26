@@ -76,6 +76,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <!-- BEGIN CONTAINER -->
     <div class="page-container row-fluid"> 
         <!-- BEGIN SIDEBAR -->
+        <?php require './left-menu.php'; ?>
         <div class="footer-widget">		
             <div class="progress transparent progress-success progress-small no-radius no-margin">
                 <div data-percentage="79%" class="bar animate-progress-bar"></div>		
