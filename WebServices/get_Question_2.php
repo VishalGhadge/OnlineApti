@@ -5,9 +5,9 @@
     $dept = $_SESSION['Dept'];
     //gets user's info based off of a username.
 
-    $x = 1;
+    $x = 11;
 
-    for ($x = 1; $x <= 6; $x++) {
+    for ($x = 11; $x <= 20; $x++) {
 
         $query = "select `Qno`,`Question`,`A`,`B`,`C`,`D`,`choice`,`time_stamp`,`Explanation`,`Name` "
                 . "from `$dept`,`admin` where "

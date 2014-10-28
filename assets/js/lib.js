@@ -321,10 +321,15 @@ jQuery(window).load(function() {
                     max_length: {value: 60, message: "The Name is too laong"}
                 },
                 {
-                    field: "password",
+                    field: "a_password",
                     min_length: {value: 5, message: "The password can\'t be empty and shorter then 5 characters"},
                     max_length: {value: 20, message: "Too long password"}
                 },
+                {
+                    field: "c_password",
+                    min_length: {value: 5, message: "The password can\'t be empty and shorter then 5 characters"},
+                    equal_to: {value: 'a_password', message: "The passwords in both fields are not equal"}
+                }
             ]
         });
 
@@ -350,7 +355,7 @@ jQuery(window).load(function() {
         jQuery.post('WebServices/add_Admin.php',
                 {
                     a_name: jQuery('#a_name').val(),
-                    password: jQuery('#password').val(),
+                    password: jQuery('#a_password').val(),
                     field: jQuery('#source').val()
                 },
         function(rez) {
@@ -362,10 +367,11 @@ jQuery(window).load(function() {
                     .toggleClass('sc_infobox_style_success', false);
             if (rez.success == 1) {
                 jQuery('.add_admins .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
-                setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');", 2000);
-
+                //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
+                setTimeout('window.location.reload();', 500);
                 jQuery('#a_name').val('');
-                jQuery('#password').val('');
+                jQuery('#a_password').val('');
+                jQuery('#c_password').val('');
                 jQuery('#source').val('');
 
 

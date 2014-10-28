@@ -18,10 +18,9 @@
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="pull-left"> 
                 <ul class="nav quick-section">
-                    <li class="quicklinks"> <a href="http://localhost:81/OnlineApti/index.php" class="" id="layout-condensed-toggle"><div class="iconset top-menu-toggle-dark"></div> </a> </li>        
+                    <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle"><div class="iconset top-menu-toggle-dark"></div> </a> </li>        
                     <li class="quicklinks"> <span class="h-seperate"></span></li>
                     <li class="quicklinks"> <a href="#" class=""><div class="iconset top-reload"></div> </a> </li> 
-
                 </ul>
                 <ul class="nav quick-section">
                     <h4><p class="text-info" >Department of <?php echo $dept ?></p></h4>
@@ -33,7 +32,7 @@
                 <div class="chat-toggler">	
                     <div class="user-details"> 
                         <div class="username">
-                            <h4 style="color: #06512F"><span class="semi-bold"><?php echo $Admin_Name; ?></span></h4>									
+                            <h4 style="color: #06512F;"><span class="semi-bold"><?php echo $Admin_Name; ?></span></h4>									
                         </div>						
                     </div> 
                 </div>

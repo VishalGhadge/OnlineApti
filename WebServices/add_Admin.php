@@ -58,7 +58,8 @@ if (!empty($_POST)) {
 
         $response["success"] = 1;
         $response["message"] = "Device Addedd successful!";
-    } else {
+    } 
+    else {
         $response["success"] = -1;
         $response["message"] = "Username Already Present , Please Use another Username";
         die(json_encode($response));

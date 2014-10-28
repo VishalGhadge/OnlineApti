@@ -108,7 +108,74 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <div id="container">
 
                     <div class="row-fluid">
-                        
+                        <div class="span6">
+                            <div class="grid simple">
+                                <div class="grid-title no-border">
+                                    <h4 style="color: #0090D9;">Add <span class="semi-bold" style="color: #0aa699">&nbsp;New Admin</span></h4>
+                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
+                                </div>
+
+                                <div class="grid-body no-border">
+                                    <div class="add_admins">
+                                        <form action="" id="admin-form">
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Admin Name :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="text" style="width:93%" name="a_name" id="a_name" placeholder="Vishal Ghadge" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Create Password :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="password" style="width:93%" name="a_password" id="a_password" placeholder="Enter new Password" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Confirm Password :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="password" style="width:93%" name="c_password" id="c_password" placeholder="Confirm password" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top: 5px;">
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Select Department :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <select id="source" style="width:100%" tabindex="-1" class="select2-offscreen" name="field">
+                                                            <optgroup label="Science Field">
+                                                                <?php require './WebServices/get_Dept.php'; ?>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="result sc_infobox " style="display: none;"></div>
+                                            </br>
+                                            <footer>
+                                                <div class="row-fluid">
+                                                    <button type="button" id="add_admin" class="btn btn-success btn-cons" style="margin-left: 70%">Add</button>
+                                                </div>
+                                            </footer>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
                         <div class="span6">
@@ -170,16 +237,56 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                 </div>
                             </div>
                         </div>
-
-                    </div>		
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span12">
+                        <div class="grid simple ">
+                            <div class="grid-title">
+                                <h4>Current <span class="semi-bold">Admins</span></h4>
+                                <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                            </div>
+                            <div class="grid-body ">
+                                <table cellpadding="0" cellspacing="0" border="0" class="table " id="example3" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Rendering engine</th>
+                                            <th>Browser</th>
+                                            <th>Platform(s)</th>
+                                            <th>Engine version</th>
+                                            <th>CSS grade</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX">
+                                            <td>Trident</td>
+                                            <td>Internet
+                                                Explorer 4.0</td>
+                                            <td>Win 95+</td>
+                                            <td class="center"> 4</td>
+                                            <td class="center">X</td>
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td>Trident</td>
+                                            <td>Internet
+                                                Explorer 5.0</td>
+                                            <td>Win 95+</td>
+                                            <td class="center">5</td>
+                                            <td class="center">C</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                
+
             </div> 
         </div>  
         <!-- END PAGE -->
     </div>
     <!-- BEGIN CHAT --> 
-    
+
     <!-- END CHAT --> 
     <!-- END CONTAINER --> 
 
