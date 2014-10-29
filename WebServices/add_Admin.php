@@ -4,7 +4,8 @@ if (!empty($_POST)) {
 
 //load and connect to MySQL database stuff
     require("config.inc.php");
-
+    
+    $Admin_Name = $_SESSION['sess_Name'];
     //gets user's info based off of a username.
     $query = " 
             SELECT *
@@ -35,8 +36,8 @@ if (!empty($_POST)) {
 
     if (!$rows) {
         
-        $query = "insert into `admin`(`Name`,`A_Pass`,`d_id`)"
-                . "values(:name,:password,:field)";
+        $query = "insert into `admin`(`Name`,`A_Pass`,`d_id`,`adminship`)"
+                . "values(:name,:password,:field,'$Admin_Name')";
 
         $query_params = array(
             ':name' => $_POST['a_name'],

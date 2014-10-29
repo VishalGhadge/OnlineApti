@@ -3,7 +3,7 @@ require './util.php';
 
 //Start session
 session_start();
-
+error_reporting(E_ERROR | E_PARSE);
 //Check whether the session variable SESS_MEMBER_ID is present or not
 if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) {
     ?>
@@ -236,101 +236,65 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                     </div>
                                 </div>
                             </div>
+
+                        </div>
+
+
+                        <div class="row-fluid">
+                            <?php require './WebServices/get_Admin.php'; ?>
                         </div>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span12">
-                        <div class="grid simple ">
-                            <div class="grid-title">
-                                <h4>Current <span class="semi-bold">Admins</span></h4>
-                                <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-                            </div>
-                            <div class="grid-body ">
-                                <table cellpadding="0" cellspacing="0" border="0" class="table " id="example3" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center"> 4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 5.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5</td>
-                                            <td class="center">C</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
 
-            </div> 
-        </div>  
-        <!-- END PAGE -->
-    </div>
-    <!-- BEGIN CHAT --> 
+                </div> 
+            </div>  
+            <!-- END PAGE -->
+        </div>
+        <!-- BEGIN CHAT --> 
 
-    <!-- END CHAT --> 
-    <!-- END CONTAINER --> 
+        <!-- END CHAT --> 
+        <!-- END CONTAINER --> 
 
-    <!-- BEGIN CORE JS FRAMEWORK--> 
+        <!-- BEGIN CORE JS FRAMEWORK--> 
 
-    <!-- END CORE JS FRAMEWORK --> 
-    <!--[if lt IE 9]>
-            <script src="assets/plugins/excanvas.js"></script>
-            <script src="assets/plugins/respond.js"></script>	
-            <![endif]--> 
+        <!-- END CORE JS FRAMEWORK --> 
+        <!--[if lt IE 9]>
+                <script src="assets/plugins/excanvas.js"></script>
+                <script src="assets/plugins/respond.js"></script>	
+                <![endif]--> 
 
-    <!-- BEGIN PAGE LEVEL JS --> 
-    <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/breakpoints.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+        <!-- BEGIN PAGE LEVEL JS --> 
+        <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/breakpoints.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
 
-    <!-- END CORE JS FRAMEWORK -->
-    <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
+        <!-- END CORE JS FRAMEWORK -->
+        <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
 
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
-    <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-inputmask/jquery.inputmask.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
-    <script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <script src="assets/js/form_elements.js" type="text/javascript"></script>
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="assets/js/core.js" type="text/javascript"></script>
-    <script src="assets/js/demo.js" type="text/javascript"></script>
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
+        <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-inputmask/jquery.inputmask.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
+        <script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
+        <script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <script src="assets/js/form_elements.js" type="text/javascript"></script>
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="assets/js/core.js" type="text/javascript"></script>
+        <script src="assets/js/demo.js" type="text/javascript"></script>
 
-    <script src="assets/js/lib.js" type="text/javascript"></script>
-    <!-- END CORE TEMPLATE JS -->
-</div></body>
+        <script src="assets/js/lib.js" type="text/javascript"></script>
+        <!-- END CORE TEMPLATE JS -->
+    </div></body>
