@@ -58,7 +58,7 @@ if (!empty($_POST)) {
         }
 
         $response["success"] = 1;
-        $response["message"] = "Device Addedd successful!";
+        $response["message"] = "Admin Added Successfully !!";
     } 
     else {
         $response["success"] = -1;

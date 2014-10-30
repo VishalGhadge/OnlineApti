@@ -402,6 +402,102 @@ jQuery(window).load(function() {
     }
 
 
+
+    // Adding Department
+
+    jQuery('.add_department form').keypress(function(e) {
+
+        if (e.keyCode === 13) {
+            jQuery('.add_department #ad').trigger('click');
+            e.preventDefault();
+            return false;
+        }
+    });
+    jQuery('.add_department #ad').click(function(e) {
+
+        console.log('click');
+        validate_Dept();
+        e.preventDefault();
+        return false;
+    });
+    // Check for validity Register Form
+    function validate_Dept() {
+        var error = formValidate(jQuery(".add_department form"), {
+            error_message_show: true,
+            error_message_time: 5000,
+            error_message_class: "sc_infobox sc_infobox_style_error",
+            error_fields_class: "error_fields_class",
+            exit_after_first_error: true,
+            rules: [
+                {
+                    field: "de_name",
+                    min_length: {value: 4, message: "The Department name cant be empty !!"},
+                    max_length: {value: 20, message: "The Name is too laong"},
+                     mask: {value: "[a-z_]$", message: "Number, Caps, symbols, Space not allowed"},
+                }
+            ]
+        });
+        if (!error) {
+//            document.forms['registration_form'].submit();
+          add_Department();
+        }
+    }
+
+    function  add_Department() {
+
+        //jQuery(".loader img").fadeIn(100);
+
+
+
+        jQuery('.add_department .result').removeAttr('style');
+        jQuery.post('WebServices/add_Dept.php',
+                {
+                    de_name: jQuery('#de_name').val(),
+                    
+                },
+        function(rez) {
+
+
+//            var rez = JSON.parse(response);
+            jQuery('.add_department .result')
+                    .toggleClass('sc_infobox_style_error', false)
+                    .toggleClass('sc_infobox_style_success', false);
+            if (rez.success == 1) {
+                jQuery('.add_department .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
+                //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
+                setTimeout('window.location.reload();', 500);
+                
+                jQuery('#a_name').val('');
+                
+
+
+//                       
+            } else if (rez.success == -1) {
+                jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+
+
+                jQuery("#de_name").toggleClass("error_fields_class", true);
+
+
+
+            } else {
+                jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+            }
+            jQuery('.add_department .result').fadeIn(500);
+            setTimeout("jQuery('.add_department .result').fadeOut()", 6000);
+
+//            console.log("session destroys");
+//            location.reload();
+//            
+//            
+            //jQuery(".loader img").fadeOut(200);
+        }, 'json');
+
+
+
+    }
+
+
 //    jQuery('.add_problem_form').keypress(function(e) {
 //
 //        if (e.keyCode === 13) {
@@ -433,7 +529,7 @@ jQuery(window).load(function() {
                 }, {
                     field: "Problem_Description",
                     min_length: {value: 5, message: "The Problem Description field can\'t be empty"},
-                    max_length: {value: 1000, message: "Too long Problem Description field"}
+                    max_length: {value: 1000, message: "Too long Problem Description field"},
                 }
             ]
         });
