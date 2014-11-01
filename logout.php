@@ -7,5 +7,5 @@ session_unset();
 session_destroy();
 ?>
 <script type="text/javascript">
-    location = "http://localhost:81/OnlineApti/sign-in.php";
+    location = "http://localhost:81/OnlineApti/signIn.php";
 </script>

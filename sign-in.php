@@ -48,12 +48,15 @@ if (!isset($_SESSION['sess_Admin_Id']) || (trim($_SESSION['sess_Name']) == '')) 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
     <body class="bg-cyan">
+        
         <div class="body body-s bg">	  
             <div class="admin_login">
 
                 <form action="" id="sky-form" class="sky-form" >
-                    <header style="text-align: center;">Login To <br>
-                        Online Aptitude Test</header>
+                    <header style="text-align: center;">
+                        <h4 style ="color: #991717" class="semi-bold" >Administrator</h4>
+                        <h5  class="" >Online Aptitude Test</h5>
+                    </header>
 
                     <fieldset>					
                         <section>

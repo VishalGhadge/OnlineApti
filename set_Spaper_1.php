@@ -5,7 +5,7 @@ require './util.php';
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 //Check whether the session variable SESS_MEMBER_ID is present or not
-if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) {
+if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     ?>
 
     <script type="text/javascript">
@@ -14,9 +14,9 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <?php
 } else {
 
-    $Admin_Name = $_SESSION['sess_Name'];
-    $Admin_Id = $_SESSION['sess_Admin_Id'];
-    $dept = $_SESSION['Dept'];
+    $RollNo = $_SESSION['sess_RollNo'];
+    $Ex_id = $_SESSION['Ex_id'];
+    $s_dept = $_SESSION['S_Dept'];
 }
 ?>
 
@@ -71,12 +71,12 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
 <!-- BEGIN BODY -->
 <body class="">
     <!-- BEGIN HEADER -->
-    <?php require './header.php'; ?> 
+    <?php require './S_header.php'; ?> 
     <!-- END HEADER --> 
     <!-- BEGIN CONTAINER -->
     <div class="page-container row-fluid"> 
         <!-- BEGIN SIDEBAR -->
-        <?php require './left-menu.php'; ?>
+        
         <div class="footer-widget">		
             <div class="progress transparent progress-success progress-small no-radius no-margin">
                 <div data-percentage="79%" class="bar animate-progress-bar"></div>		
@@ -85,7 +85,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <div class="details-status">
                     <span data-animation-duration="560" data-value="86" class="animate-number"></span>%
                 </div>	
-                <a href="sign-in.php"><i class="icon-off"></i></a></div>
+                <a href="signIn.php"><i class="icon-off"></i></a></div>
         </div>
         <!-- END SIDEBAR --> 
         <!-- BEGIN PAGE CONTAINER-->
@@ -121,7 +121,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 </div>
             </div>
             <div id="container">
-                <?php include './WebServices/get_Question_1.php'; ?>
+                <?php include './WebServices/get_SQuestion_1.php'; ?>
             </div>
         </div>
     </div>
@@ -131,82 +131,37 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <!-- END CORE TEMPLATE JS -->
 
     <script type="text/javascript">
-        function getIndex(x) {
+        function getAns(x,c) {
 
             var error_msg_box = null;
-
             console.log('click');
-            Check_Question();
+            Update_Answer()
             e.preventDefault();
             return false;
             // Check Info to Update ..
-            function Check_Question() {
-                var error = formValidate(jQuery(".Question_" + x + " form"), {
-                    error_message_show: true,
-                    error_message_time: 5000,
-                    error_message_class: "sc_infobox sc_infobox_style_error",
-                    error_fields_class: "error_fields_class",
-                    exit_after_first_error: true,
-                    rules: [
-                        {
-                            field: "q" + x,
-                            min_length: {value: 1, message: "Plz Enter Question...!"},
-                            // max_length: {value: 60, message: "Plz Enter short User Name.."}
-                        },
-                        {
-                            field: "a_" + x,
-                            min_length: {value: 1, message: "You must Enter Any Value.."},
-                            //max_length: {value: 10, message: "choose proper date"}
-                        }
-                        ,
-                        {
-                            field: "b_" + x,
-                            min_length: {value: 1, message: "You must Enter Any Value.."},
-                            //max_length: {value: 10, message: "choose proper date"}
-                        }
-                    ]
-                });
+            
+            function  Update_Answer() {
 
-                if (!error) {
-                    //            document.forms['registration_form'].submit();
-
-                    Update_Question();
-                }
-            }
-            function  Update_Question() {
-
-                //jQuery(".Question_" + x + " .loader img").fadeIn(100);
-                jQuery('.Question_' + x + ' .result').removeAttr('style');
-                jQuery.post('WebServices/Updt_Ques.php',
+                //jQuery(".Answer_" + x + " .loader img").fadeIn(100);
+                jQuery('.Answer_' + x + ' .result').removeAttr('style');
+                jQuery.post('WebServices/Updt_Ans.php',
                         {
                             qno: x,
-                            Que: jQuery('#q' + x).val(),
-                            op_a: jQuery('#a_' + x).val(),
-                            op_b: jQuery('#b_' + x).val(),
-                            op_c: jQuery('#c_' + x).val(),
-                            op_d: jQuery('#d_' + x).val(),
-                            ch: jQuery('#choice_' + x).val(),
-                            Exp: jQuery('#Ex' + x).val()
+                            ch: c
                         },
                 function(rez) {
 
-
-                    //            var rez = JSON.parse(response);
-                    /*jQuery('.Question_' + x + ' .result')
-                     .toggleClass('sc_infobox_style_error', false)
-                     .toggleClass('sc_infobox_style_success', false);*/
-
                     if (rez.success == 1) {
-                        jQuery('.Question_' + x + ' .result').addClass('sc_infobox_style_success').html('Question Updated Successfully !');
+                        //jQuery('.Answer_' + x + ' .result').addClass('sc_infobox_style_success').html('Answer is saved !');
                         //jQuery(".Question_" + x + " .loader img").fadeOut(200);
-                        setTimeout('window.location.reload();', 500);
+                        //setTimeout('window.location.reload();', 500);
 
                     } else {
 
-                        jQuery('.Question_' + x + ' .result').addClass('sc_infobox_style_error').html('Updation Failed !');
+                        jQuery('.Answer_' + x + ' .result').addClass('sc_infobox_style_error').html('Updation Failed !');
                     }
-                    jQuery('.Question_' + x + ' .result').fadeIn(500);
-                    setTimeout("jQuery('.Question_'" + x + "' .result').fadeOut()", 6000);
+                    jQuery('.Answer_' + x + ' .result').fadeIn(500);
+                    setTimeout("jQuery('.Answer_'" + x + "' .result').fadeOut()", 500);
 
                     //            console.log("session destroys");
                     //            location.reload();
@@ -320,7 +275,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
     <script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script>
+   <!-- <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script> -->
     <script src="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
     <script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
     <script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>

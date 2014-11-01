@@ -18,6 +18,8 @@ $Website_Meta_Author = "Vishal Ghadge";
 
 $Admin_Name = "";
 $Admin_Id = "";
+$RollNo = "";
+$Ex_id = "";
 //$Admin_Profile_Image = "";
 $Menu_Select = -1;
 ?>

@@ -9,7 +9,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     ?>
 
     <script type="text/javascript">
-        location = "http://localhost:81/OnlineApti/sign-in.php";
+        location = "http://localhost:81/OnlineApti/signIn.php";
     </script>
     <?php
 } else {

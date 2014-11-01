@@ -160,7 +160,7 @@ jQuery(window).load(function() {
                 jQuery('#State').val('');
                 jQuery('#City').val('');
 
-                setTimeout('window.location.href = "http://adminpea.openinfotech.org/sign-in.php";', 1000);
+                setTimeout('window.location.href = "http://adminpea.openinfotech.org/signIn.php";', 1000);
             } else if (rez.success == -1) {
                 jQuery('.admin_registration .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
 
@@ -401,6 +401,111 @@ jQuery(window).load(function() {
 
     }
 
+
+    
+    // Student Login
+    jQuery('.student_login form').keypress(function(e) {
+
+        if (e.keyCode === 13) {
+            jQuery('.student_logi #st_enter').trigger('click');
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    jQuery('.student_login #st_enter').click(function(e) {
+
+        StudentLogin();
+        e.preventDefault();
+        return false;
+    });
+    // Check for validity Register Form
+    function StudentLogin() {
+        var error = formValidate(jQuery(".student_login form"), {
+            error_message_show: true,
+            error_message_time: 6000,
+            error_message_class: "sc_infobox sc_infobox_style_error",
+            error_fields_class: "error_fields_class",
+            exit_after_first_error: true,
+            rules: [{
+                    field: "RollNo",
+                    min_length: {value: 6, message: "The Roll Number is short"},
+                    max_length: {value: 7, message: "Too long Roll Number field"},
+                    mask:{value: "[0-9]",message: "Character or symbols not allowed"}
+                },
+                {
+                    field: "Expass",
+                    min_length: {value: 2, message: "The password can\'t be empty and shorter then 5 characters"},
+                    max_length: {value: 20, message: "Too long password"}
+                }]});
+
+        if (!error) {
+//            document.forms['registration_form'].submit();
+
+            performStudentLogin();
+        }
+    }
+
+
+    /**
+     * This method is used for Admin registration
+     * @returns {undefined}
+     */
+    function  performStudentLogin() {
+
+        jQuery('.student_login .result').removeAttr('style');
+        jQuery.post('WebServices/stud_login.php',
+                {
+                    RollNo: jQuery('#RollNo').val(),
+                    Expass: jQuery('#Expass').val()
+                },
+        function(rez) {
+
+
+            //            var rez = JSON.parse(response);             
+            jQuery('.student_login .result')
+                    .toggleClass('sc_infobox_style_error', false)
+                    .toggleClass('sc_infobox_style_success', false);
+            if (rez.success == 1) {
+
+                jQuery('.student_login .result').addClass('sc_infobox_style_success').html('Login successful!');
+
+                setTimeout("jQuery('.student_login .close').trigger('click'); jQuery('.login-popup-link').trigger('click');", 2000);
+
+                setTimeout('window.location.href = "http://localhost:81/OnlineApti/set_Spaper_1.php";', 1000);
+            } else if (rez.success == -1) {
+                jQuery('.student_login .result').addClass('sc_infobox_style_error').html(rez.message);
+
+
+                jQuery("#RollNo").toggleClass("error_fields_class", true);
+
+
+
+            } else if (rez.success == -2) {
+                jQuery('.student_login .result').addClass('sc_infobox_style_error').html(rez.message);
+
+
+                jQuery("#Expass").toggleClass("error_fields_class", true);
+
+
+
+            } else {
+                jQuery('.student_login .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
+            }
+            jQuery('.student_login .result').fadeIn();
+            setTimeout("jQuery('.student_login .result').fadeOut()", 5000);
+
+            //            console.log("session destroys");
+//            location.reload();
+            //            
+            //            
+            jQuery(".loader img").fadeOut(200);
+        }, 'json');
+
+
+
+    }
+    
 
 
     // Adding Department

@@ -63,7 +63,7 @@
 
     $x = 1;
 
-    for ($x = 1; $x <= 10; $x++) {
+    for ($x = 1; $x <= 30; $x++) {
 
         $query = "select `Qno`,`Question`,`A`,`B`,`C`,`D`,`choice`,`time_stamp`,`Explanation`,`Name` "
                 . "from `$dept`,`admin` where "
