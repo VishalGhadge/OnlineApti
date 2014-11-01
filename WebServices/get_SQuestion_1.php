@@ -165,40 +165,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                </br>
-                                                <div class="result sc_infobox " style="display: none;"></div>
-                                                <footer>
-                                                    <div class="row-fluid">
-                                                        <div class="span3">
-                                                            <h5><span class="semi-bold">Correct Choice :</span></h5>
-                                                        </div>
-                                                        <div class="span3">
-                                                            <select id="choice_<?php echo $x; ?>" name="choice_<?php echo $x; ?>" style="width: 40%;">
-                                                                <?php
-                                                                $i = 1;
-                                                                $ch = 'A';
-                                                                for ($i = 1; $i <= 4; $i++) {
-                                                                    if ($i == $row['choice']) {
-                                                                        ?>
-                                                                        <option value="<?php echo $i; ?>" selected="selected" ><?php echo $ch++; ?></option>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        <option value="<?php echo $i; ?>" ><?php echo $ch++; ?></option>
-                                                                        <?php
-                                                                    }
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="span4">
-                                                            <button type="button" id="add_Q<?php echo $x; ?>"  onclick="getIndex('<?php echo $x; ?>')" class="btn btn-success btn-cons" style="margin-right: ">Save</button>
-                                                        </div>
-                                                    </div>
-                                                </footer>
-
                                             </form>
                                         </div>
 
