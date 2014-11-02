@@ -402,7 +402,7 @@ jQuery(window).load(function() {
     }
 
 
-    
+
     // Student Login
     jQuery('.student_login form').keypress(function(e) {
 
@@ -431,7 +431,7 @@ jQuery(window).load(function() {
                     field: "RollNo",
                     min_length: {value: 6, message: "The Roll Number is short"},
                     max_length: {value: 7, message: "Too long Roll Number field"},
-                    mask:{value: "[0-9]",message: "Character or symbols not allowed"}
+                    mask: {value: "[0-9]", message: "Character or symbols not allowed"}
                 },
                 {
                     field: "Expass",
@@ -505,7 +505,109 @@ jQuery(window).load(function() {
 
 
     }
-    
+
+
+    // adding students ..
+    jQuery('.add_students form').keypress(function(e) {
+
+        if (e.keyCode === 13) {
+            jQuery('.add_students #std').trigger('click');
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    jQuery('.add_students #std').click(function(e) {
+
+        validate_student();
+        e.preventDefault();
+        return false;
+    });
+    // Check for validity Register Form
+    function validate_student() {
+        var error = formValidate(jQuery(".add_students form"), {
+            error_message_show: true,
+            error_message_time: 6000,
+            error_message_class: "sc_infobox sc_infobox_style_error",
+            error_fields_class: "error_fields_class",
+            exit_after_first_error: true,
+            rules: [{
+                    field: "rn_from",
+                    min_length: {value: 6, message: "The Roll Number is short"},
+                    max_length: {value: 8, message: "Too long Roll Number field"},
+                    mask: {value: "[0-9]", message: "Character or symbols not allowed"}
+                },
+                {
+                    field: "rn_to",
+                    min_length: {value: 6, message: "The Roll Number is short"},
+                    max_length: {value: 8, message: "Too long Roll Number field"},
+                    mask: {value: "[0-9]", message: "Character or symbols not allowed"}
+                }]});
+
+        if (!error) {
+//            document.forms['registration_form'].submit();
+
+            add_student();
+        }
+    }
+
+
+    /**
+     * This method is used for Admin registration
+     * @returns {undefined}
+     */
+    function  add_student() {
+
+        jQuery('.add_students .result').removeAttr('style');
+        jQuery.post('WebServices/add_Student.php',
+                {
+                    rn_from: jQuery('#rn_from').val(),
+                    rn_to: jQuery('#rn_to').val()
+                },
+        function(rez) {
+
+
+            //            var rez = JSON.parse(response);             
+            jQuery('.add_students .result')
+                    .toggleClass('sc_infobox_style_error', false)
+                    .toggleClass('sc_infobox_style_success', false);
+            if (rez.success == 1) {
+
+                jQuery('.add_students .result').addClass('sc_infobox_style_success').html('Students added successfully !');
+                setTimeout('window.location.reload();', 500);
+                
+            } else if (rez.success == -1) {
+                jQuery('.add_students .result').addClass('sc_infobox_style_error').html(rez.message);
+
+
+                jQuery("#rn_from").toggleClass("error_fields_class", true);
+
+
+
+            } else if (rez.success == -2) {
+                jQuery('.add_students .result').addClass('sc_infobox_style_error').html(rez.message);
+
+
+                jQuery("#rn_to").toggleClass("error_fields_class", true);
+
+
+
+            } else {
+                jQuery('.add_students .result').addClass('sc_infobox_style_error').html('Registration failed! ' + rez.message);
+            }
+            jQuery('.add_students .result').fadeIn();
+            setTimeout("jQuery('.add_students .result').fadeOut()", 5000);
+
+            //            console.log("session destroys");
+//            location.reload();
+            //            
+            //            
+           // jQuery(".loader img").fadeOut(200);
+        }, 'json');
+
+
+
+    }
 
 
     // Adding Department
@@ -538,13 +640,13 @@ jQuery(window).load(function() {
                     field: "de_name",
                     min_length: {value: 4, message: "The Department name cant be empty !!"},
                     max_length: {value: 20, message: "The Name is too laong"},
-                     mask: {value: "[a-z_]$", message: "Number, Caps, symbols, Space not allowed"},
+                    //mask: {value: "/^[a-z]+$/", message: "Number, Caps, symbols, Space not allowed"},
                 }
             ]
         });
         if (!error) {
 //            document.forms['registration_form'].submit();
-          add_Department();
+            //add_Department();
         }
     }
 
@@ -558,45 +660,44 @@ jQuery(window).load(function() {
         jQuery.post('WebServices/add_Dept.php',
                 {
                     de_name: jQuery('#de_name').val(),
-                    
                 },
-        function(rez) {
+                function(rez) {
 
 
 //            var rez = JSON.parse(response);
-            jQuery('.add_department .result')
-                    .toggleClass('sc_infobox_style_error', false)
-                    .toggleClass('sc_infobox_style_success', false);
-            if (rez.success == 1) {
-                jQuery('.add_department .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
-                //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
-                setTimeout('window.location.reload();', 500);
-                
-                jQuery('#a_name').val('');
-                
+                    jQuery('.add_department .result')
+                            .toggleClass('sc_infobox_style_error', false)
+                            .toggleClass('sc_infobox_style_success', false);
+                    if (rez.success == 1) {
+                        jQuery('.add_department .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
+                        //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
+                        setTimeout('window.location.reload();', 500);
+
+                        jQuery('#a_name').val('');
+
 
 
 //                       
-            } else if (rez.success == -1) {
-                jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+                    } else if (rez.success == -1) {
+                        jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
 
 
-                jQuery("#de_name").toggleClass("error_fields_class", true);
+                        jQuery("#de_name").toggleClass("error_fields_class", true);
 
 
 
-            } else {
-                jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
-            }
-            jQuery('.add_department .result').fadeIn(500);
-            setTimeout("jQuery('.add_department .result').fadeOut()", 6000);
+                    } else {
+                        jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+                    }
+                    jQuery('.add_department .result').fadeIn(500);
+                    setTimeout("jQuery('.add_department .result').fadeOut()", 6000);
 
 //            console.log("session destroys");
 //            location.reload();
 //            
 //            
-            //jQuery(".loader img").fadeOut(200);
-        }, 'json');
+                    //jQuery(".loader img").fadeOut(200);
+                }, 'json');
 
 
 

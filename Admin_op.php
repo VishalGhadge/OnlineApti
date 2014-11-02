@@ -194,7 +194,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                                         <h5><span class="semi-bold">Department Name :</span></h5>
                                                     </div>
                                                     <div class="span7">
-                                                        <input type="text" style="width:93%" name="de_name" id="de_name" />
+                                                        <input type="text" style="width:93%" name="de_name" id="de_name" onkeyup="this.value=this.value.replace(/[^a-z_]/g,'');" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -202,11 +202,42 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                             <div class="result sc_infobox " style="display: none;"></div>
                                             <footer>
                                                 <div class="row-fluid">
-                                                    <div class="span7">
-                                                        <button type="button" id="ad" name="ad" class="btn btn-success btn-cons" style="margin-right: ">Add</button>
-                                                    </div>
+                                                    <button type="button" id="ad" name="ad" class="btn btn-success btn-cons" style="margin-left: 70%;">Add</button>
                                                 </div>
                                             </footer>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid simple">
+                                <div class="grid-title no-border">
+                                    <h4 style="color: #852b99;">Add <span class="semi-bold" style="color: #0aa699">&nbsp;Students</span></h4>
+                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
+                                </div>
+
+                                <div class="grid-body no-border">
+                                    <div class="add_students">
+                                        <form action="" id="std_form">
+                                            <div>
+                                                <div class="control-group">
+                                                    <div class="controls-row">
+                                                        <div class="span2">
+                                                            <h5><span class="semi-bold">from :</span></h5>
+                                                        </div>
+                                                        <input type="text" class="span2" data-v-max="999999" data-v-min="0" name="rn_from" id="rn_from" >
+                                                        <div class="span1" style="margin-left: 8%">
+                                                            <h5><span class="semi-bold">To :</span></h5>
+                                                        </div>
+                                                        <input type="text" class="span2" data-v-max="999999" data-v-min="0" name="rn_to" id="rn_to" >
+                                                        <div class="span2">
+                                                            <button type="button" id="std" name="std" class="btn btn-success btn-cons"  style="margin-left: 70%;">Add</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="result sc_infobox " style="display: none;"></div>
                                         </form>
                                     </div>
                                 </div>
@@ -238,7 +269,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <![endif]--> 
 
         <!-- BEGIN PAGE LEVEL JS --> 
-        
+
         <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
         <script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -271,6 +302,6 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
         <script src="assets/js/core.js" type="text/javascript"></script>
         <script src="assets/js/demo.js" type="text/javascript"></script>
         <script src="assets/js/lib.js" type="text/javascript"></script>
-        
+
         <!-- END CORE TEMPLATE JS -->
     </div></body>
