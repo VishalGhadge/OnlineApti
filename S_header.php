@@ -9,7 +9,7 @@
             <a href="index.php"><img src="assets/img/modern.png" width="130" height="100" class="logo" style="margin-top: auto;" /></a>
             <!-- END LOGO --> 
             <ul class="nav pull-right notifcation-center">	
-                <li class="dropdown" id="header_task_bar"> <a href="index.php" class="dropdown-toggle active" data-toggle=""> <div class="iconset top-home"></div> </a> </li>
+                <li class="dropdown" id="header_task_bar"> <a href="disp_result.php" class="dropdown-toggle active" data-toggle=""> <div  class="iconset  icon-thumbs-up-alt"></div> </a> </li>
                 <li class="dropdown" id="portrait-chat-toggler" style="display:none"> <a href="#sidr" class="chat-menu-toggle"> <div class="iconset top-chat-white "></div> </a> </li>        
             </ul>
         </div>

@@ -124,7 +124,7 @@ if ($rows) {
 
 
 // echoing JSON response
-echo json_encode($response);
+//echo json_encode($response);
 # close the connection
 $db = null;
 ?>
