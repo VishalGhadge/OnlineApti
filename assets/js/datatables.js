@@ -161,7 +161,7 @@ $(document).ready(function() {
                     "sExtends": "collection",
                     "sButtonText": "<i class='icon-cloud-download'></i>",
                     "aButtons": ["csv", "xls", "pdf", "copy"],
-                    sSwfPath: "http://adminpea.openinfotech.org/assets/plugins/jquery-datatable/extra/TableTools/media/swf/copy_csv_xls_pdf.swf"
+                    sSwfPath: "assets/plugins/jquery-datatable/extra/TableTools/media/swf/copy_csv_xls_pdf.swf"
                 }
             ]
         },

@@ -22,6 +22,7 @@ $(document).ready(function() {
         autoclose: true,
         todayHighlight: true
     });
+    
 
     //Time pickers
     $('.timepicker-default').timepicker();
@@ -41,9 +42,9 @@ $(document).ready(function() {
         $("#ssn").mask("999-99-9999");
         $("#rn_from").mask("999999");
         $("#rn_to").mask("999999");
-        
+
     });
-    
+
     //Autonumeric plug-in - automatic addition of dollar signs,etc controlled by tag attributes
     $('.auto').autoNumeric('init');
 
@@ -62,23 +63,23 @@ $(document).ready(function() {
 
     //Cool ios7 switch - Beta version
 //Done using pure Javascript
-/*
-    var Switch = require('ios7-switch')
-            , checkbox = document.querySelector('.ios')
-            , mySwitch = new Switch(checkbox);
-    mySwitch.toggle();
-    mySwitch.el.addEventListener('click', function(e) {
-        e.preventDefault();
-        mySwitch.toggle();
-    }, false);
-//creating multiple instances
-    var Switch2 = require('ios7-switch')
-            , checkbox = document.querySelector('.iosblue')
-            , mySwitch2 = new Switch2(checkbox);
-
-    mySwitch2.el.addEventListener('click', function(e) {
-        e.preventDefault();
-        mySwitch2.toggle();
-    }, false);
-    */
+    /*
+     var Switch = require('ios7-switch')
+     , checkbox = document.querySelector('.ios')
+     , mySwitch = new Switch(checkbox);
+     mySwitch.toggle();
+     mySwitch.el.addEventListener('click', function(e) {
+     e.preventDefault();
+     mySwitch.toggle();
+     }, false);
+     //creating multiple instances
+     var Switch2 = require('ios7-switch')
+     , checkbox = document.querySelector('.iosblue')
+     , mySwitch2 = new Switch2(checkbox);
+     
+     mySwitch2.el.addEventListener('click', function(e) {
+     e.preventDefault();
+     mySwitch2.toggle();
+     }, false);
+     */
 });

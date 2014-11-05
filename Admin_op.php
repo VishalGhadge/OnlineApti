@@ -46,6 +46,10 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
     <link href="assets/plugins/ios-switch/ios7-switch.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8" />
     <link href="assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <link href="assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/boostrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <!-- END PLUGIN CSS -->
 
     <!-- BEGIN CORE CSS FRAMEWORK -->
@@ -194,7 +198,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                                         <h5><span class="semi-bold">Department Name :</span></h5>
                                                     </div>
                                                     <div class="span7">
-                                                        <input type="text" style="width:93%" name="de_name" id="de_name" onkeyup="this.value=this.value.replace(/[^a-z_]/g,'');" />
+                                                        <input type="text" style="width:93%" name="de_name" id="de_name" onkeyup="this.value = this.value.replace(/[^a-z_]/g, '');" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,40 +239,140 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="result sc_infobox " style="display: none;"></div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
+                        <!-- creating Exam ! -->
+                        <div class="row-fluid">
+                            <div class="row-fluid">
+                                <div class="remove_adm">
+                                    <div class="span12">
+                                        <div class="grid simple ">
+                                            <div class="grid-title">
+                                                <h4 style="color: #f65314;">Exam <span class="semi-bold">Schedule</span></h4>
 
+                                                <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                                            </div>
+                                            <div class="grid-body ">
+                                                <table class="table table-condensed" id="example">
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="add_exm">
+                                                                    <div id="accordion2" class="accordion">
+                                                                        <div class="accordion-group">
+                                                                            <div class="accordion-heading"> 
+                                                                                <a href="#collapseOne<?php echo $ad; ?>" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                                                    <span class="semi-bold" style="color: #00a1f1;">Add New Exam</span>
+                                                                                    <i class="icon-plus"></i> 
+                                                                                </a> 
+                                                                            </div>
+                                                                            <form actio="" id="fexm_<?php echo $ad; ?>">
+                                                                                <div class="accordion-body collapse" id="collapseOne<?php echo $ad; ?>" style="height: 0px;">
+                                                                                    <div class="accordion-inner"> 
+                                                                                        <div class="row-fluid">
+                                                                                            <div class="row-fluid span6">
+                                                                                                <div class="span4">
+                                                                                                    <h5><span class="semi-bold">Password :</span></h5>
+                                                                                                </div>
+                                                                                                <div class="span7">
+                                                                                                    <input type="text" style="width:93%" name="e_pass" id="e_pass" placeholder="Exam Password" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="row-fluid span6">
+                                                                                                <div class="span4">
+                                                                                                    <h5><span class="semi-bold">Date&nbsp;(mm:dd:yy) :</span></h5>
+                                                                                                </div>
+                                                                                                <div class="row-fluid">
+                                                                                                    <div class="input-append success date">
+                                                                                                        <input type="text" class="span12" id="e_date" name="e_date" placeholder="Exam Date" >
+                                                                                                        <span class="add-on"><span class="arrow"></span><i class="icon-th"></i></span> </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="row-fluid" style="margin-top: 1%;">
+                                                                                            <div class="row-fluid span6">
+                                                                                                <div class="span4">
+                                                                                                    <h5><span class="semi-bold">Time :</span></h5>
+                                                                                                </div>
+                                                                                                <div class="span7">
+                                                                                                    <div class="controls">
+                                                                                                        <div class="input-append bootstrap-timepicker-component">
+                                                                                                            <input type="text" class="timepicker-default span12" id="e_time" name="e_time" >
+                                                                                                            <span class="add-on"><span class="arrow"></span><i class="icon-time"></i></span> </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="row-fluid span6">
+                                                                                                <div class="span4">
+                                                                                                    <h5><span class="semi-bold">Marking System :</span></h5>
+                                                                                                </div>
+                                                                                                <div class="span6">
+                                                                                                    <div class="radio radio-success">
+                                                                                                        <input id="positive" type="radio" name="mrk_sys" value="1" checked="checked">
+                                                                                                        <label for="positive">+ve</label>
+                                                                                                        <input id="negative" type="radio" name="mrk_sys" value="0">
+                                                                                                        <label for="negative">-ve</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row-fluid" style="margin-top: 1%;">
+                                                                                            <div class="row-fluid span6">
+                                                                                                <div class="span4">
+                                                                                                    <h5><span class="semi-bold">Done :</span></h5>
+                                                                                                </div>
+                                                                                                <div class="span7">
+                                                                                                    <button type="button" id="add_ex" class="btn btn-info btn-cons" ><i class="icon-paste"></i> Edit</button>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <?php require './WebServices/get_Exam.php'; ?>
+                                                    </tbody>
+                                                </table>
+                                                <div class="result sc_infobox " style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Admin Info -->
                         <div class="row-fluid">
                             <?php require './WebServices/get_Admin.php'; ?>
                         </div>
+
+
+
+
+
+
+
                     </div>
 
                 </div> 
             </div>  
             <!-- END PAGE -->
         </div>
-        <!-- BEGIN CHAT --> 
 
-        <!-- END CHAT --> 
-        <!-- END CONTAINER --> 
-
-        <!-- BEGIN CORE JS FRAMEWORK--> 
-
-        <!-- END CORE JS FRAMEWORK --> 
-        <!--[if lt IE 9]>
-                <script src="assets/plugins/excanvas.js"></script>
-                <script src="assets/plugins/respond.js"></script>	
-                <![endif]--> 
-
-        <!-- BEGIN PAGE LEVEL JS --> 
 
         <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
         <script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
@@ -292,7 +396,13 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
         <script src="assets/plugins/jquery-autonumeric/autoNumeric.js" type="text/javascript"></script>
         <script src="assets/plugins/ios-switch/ios7-switch.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-       <!-- <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script> -->
+        <script src="assets/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="assets/plugins/jquery-datatable/extra/js/TableTools.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
+        <script type="text/javascript" src="assets/plugins/datatables-responsive/js/lodash.min.js"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <script src="assets/js/datatables.js" type="text/javascript"></script>
+               <!-- <script src="assets/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js" type="text/javascript"></script> -->
         <script src="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js" type="text/javascript"></script>
         <script src="assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js" type="text/javascript"></script>
         <script src="assets/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
@@ -302,6 +412,14 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
         <script src="assets/js/core.js" type="text/javascript"></script>
         <script src="assets/js/demo.js" type="text/javascript"></script>
         <script src="assets/js/lib.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+                                                            $('.input-append.date').datepicker({
+                                                                autoclose: true,
+                                                                todayHighlight: true,
+                                                                format: 'yyyy-mm-dd'
+                                                            });
+        </script>
 
         <!-- END CORE TEMPLATE JS -->
     </div></body>

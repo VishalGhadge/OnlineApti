@@ -403,6 +403,113 @@ jQuery(window).load(function() {
 
 
 
+    // adding Exam ..!!
+    jQuery('.add_exm form').keypress(function(e) {
+
+        if (e.keyCode === 13) {
+            jQuery('.add_exm #add_ex').trigger('click');
+            e.preventDefault();
+            return false;
+        }
+    });
+    jQuery('.add_exm #add_ex').click(function(e) {
+
+        console.log('click');
+        validate_Exam();
+        e.preventDefault();
+        return false;
+    });
+    // Check for validity Register Form
+    function validate_Exam() {
+        var error = formValidate(jQuery(".add_exm form"), {
+            error_message_show: true,
+            error_message_time: 5000,
+            error_message_class: "sc_infobox sc_infobox_style_error",
+            error_fields_class: "error_fields_class",
+            exit_after_first_error: true,
+            rules: [
+                {
+                    field: "e_pass",
+                    min_length: {value: 1, message: "The Password cant be empty !!"},
+                    max_length: {value: 20, message: "The Password is too laong"}
+                },
+                {
+                    field: "e_date",
+                    min_length: {value: 1, message: "Plz Enter Date..!"},
+                    //max_length: {value: 20, message: "Too long password"}
+                },
+                {
+                    field: "e_time",
+                    min_length: {value: 1, message: "You must enter Time"},
+                    //equal_to: {value: 'a_password', message: "The passwords in both fields are not equal"}
+                }
+            ]
+        });
+
+        if (!error) {
+//            document.forms['registration_form'].submit();
+            add_Exam();
+        }
+    }
+
+
+    /**
+     * This method is used for Admin registration
+     * @returns {undefined}
+     */
+    function  add_Exam() {
+
+        //jQuery(".loader img").fadeIn(100);
+        var error_msg_box = null;
+        var selectedVal = "";
+        var selected = $("input[name=mrk_sys]:checked");
+
+
+        jQuery('.add_exm .result').removeAttr('style');
+        jQuery.post('WebServices/add_Exam.php',
+                {
+                    e_pass: jQuery('#e_pass').val(),
+                    e_date: jQuery('#e_date').val(),
+                    e_time: jQuery('#e_time').val(),
+                    mrk_sys: selected.val()
+                },
+        function(rez) {
+
+
+//            var rez = JSON.parse(response);
+            jQuery('.add_exm .result')
+                    .toggleClass('sc_infobox_style_error', false)
+                    .toggleClass('sc_infobox_style_success', false);
+            if (rez.success == 1) {
+                jQuery('.add_exm .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
+                //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
+                setTimeout('window.location.reload();', 500);
+                jQuery('#e_pass').val('');
+                jQuery('#e_date').val('');
+                jQuery('#e_time').val('');
+                
+//                       
+            } else if (rez.success == -1) {
+                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+
+
+                jQuery("#e_pass").toggleClass("error_fields_class", true);
+
+
+
+            } else {
+                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html('failed to add Exam! ' + rez.message);
+            }
+            jQuery('.add_exm .result').fadeIn(500);
+            setTimeout("jQuery('.add_exm .result').fadeOut()", 6000);
+
+//            console.log("session destroys");
+        }, 'json');
+
+
+
+    }
+
     // Student Login
     jQuery('.student_login form').keypress(function(e) {
 
@@ -575,7 +682,7 @@ jQuery(window).load(function() {
 
                 jQuery('.add_students .result').addClass('sc_infobox_style_success').html('Students added successfully !');
                 setTimeout('window.location.reload();', 500);
-                
+
             } else if (rez.success == -1) {
                 jQuery('.add_students .result').addClass('sc_infobox_style_error').html(rez.message);
 
@@ -602,7 +709,7 @@ jQuery(window).load(function() {
 //            location.reload();
             //            
             //            
-           // jQuery(".loader img").fadeOut(200);
+            // jQuery(".loader img").fadeOut(200);
         }, 'json');
 
 

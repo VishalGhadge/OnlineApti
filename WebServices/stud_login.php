@@ -15,11 +15,14 @@ if (!empty($_POST)) {
 //load and connect to MySQL database stuff
     require("config.inc.php");
 
+    $RollNo = $_SESSION['sess_RollNo'];
+    $Ex_id = $_SESSION['Ex_id'];
+    $s_dept = $_SESSION['S_Dept'];
     
 //execute query
     
-    $query = "select d_name,id,name,rno from `department`,`exam`,`student` "
-            . "where name=:Expass and rno=:RollNo and department.d_id in(select d_id from `student` where rno=:RollNo);";
+    $query = "select `d_name`,`id`,`E_pass`,`rno` from `department`,`exam`,`student` "
+            . "where `E_pass` = :Expass and `rno` = :RollNo and `department`.`d_id` in(select `d_id` from `student` where `rno`=:RollNo);";
     
     $query_params = array(
         ':RollNo' => $_POST['RollNo'],
@@ -59,7 +62,7 @@ if (!empty($_POST)) {
              */
             //$password = getEncryptedData($password, $row['salt_sha1a'], $row['salt_sha1b'], $row['salt_sha256'], $row['salt_sha384'], $row['salt_sha512']);
 
-            if ($Expass == $row['name']) {
+            if ($Expass == $row['E_pass']) {
 
                 //AfterSuccessfulLogin($db);
                 $response["success"] = 0.5;
