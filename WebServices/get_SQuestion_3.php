@@ -34,8 +34,8 @@
 
         foreach ($op as $op_row) {
 
-            $x = 1;
-            for ($x = 1; $x <= 10; $x++) {
+            $x = 21;
+            for ($x = 21; $x <= 30; $x++) {
 
                 $query = "select `Qno`,`Question`,`A`,`B`,`C`,`D`,`choice`,`time_stamp`,`Explanation`,`Name` "
                         . "from `$s_dept`,`admin` where "

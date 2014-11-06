@@ -103,25 +103,25 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                 <div class="page-title">
                     <div class="row-fluid">
                         <div class="span4">
-                            <a href="set_Spaper_1.php">
-                                <i class="icon-chevron-sign-left disabled" ></i>
+                            <a href="set_Spaper_2.php">
+                                <i class="icon-chevron-sign-left" ></i>
                             </a>
                         </div>
                         <div class="span4" >
                             <div style="margin-left: 30%">
-                            <h3 class="semi-bold"  style="color: #004c4c" >1&nbsp;-&nbsp;10&nbsp;</h3>
+                            <h3 class="semi-bold"  style="color: #004c4c" >21&nbsp;-&nbsp;30&nbsp;</h3>
                             </div>
                         </div>
                         <div class="span4">
-                            <a href="set_Spaper_2.php">
-                                <i class="icon-chevron-sign-right" style="margin-left: 90%"></i>
+                            <a href="set_Spaper_3.php">
+                                <i class="icon-chevron-sign-right disabled" style="margin-left: 90%"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="container">
-                <?php include './WebServices/get_SQuestion_1.php'; ?>
+                <?php include './WebServices/get_SQuestion_3.php'; ?>
             </div>
         </div>
     </div>

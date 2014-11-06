@@ -1,14 +1,4 @@
 <?php
-//header('Access-Control-Allow-Origin: *');  //I have also tried the * wildcard and get the same response
-//header("Access-Control-Allow-Credentials: true");
-//header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-//header('Access-Control-Max-Age: 1000');
-//header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
-//header('Content-type: application/json; charset=utf-8');
-//
-//
-
-
 
 
 if (!empty($_POST)) {
@@ -18,7 +8,7 @@ if (!empty($_POST)) {
     
 //execute query
     
-    $query = "select d_name,Name,A_Pass,A_id from `department`,`admin` where Name=:Username and A_pass=:password and department.d_id in(select d_id from `admin` where Name=:Username);";
+    $query = "select d_name,rno from `department`,`student` where `rno` and A_pass=:password and department.d_id in(select d_id from `admin` where Name=:Username);";
     
     $query_params = array(
         ':Username' => $_POST['Username'],

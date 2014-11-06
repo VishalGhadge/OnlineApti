@@ -122,9 +122,44 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                             <div class="grid-body">
                                 <div>
                                     <h2 class="center-text" style="color: #FFA500;">Your Total<span class="semi-bold" style="color: #00ced1;"> Marks</span></h2>
-                                    <h1 class="center-text semi-bold" style="color: #00C060; margin-top: 2%;"><?php echo $mark; ?>&nbsp;/&nbsp;<?php echo --$x; ?></h1> 
+                                    <?php
+                                    if ($mark >= 20) {
+                                        ?>
+                                        <h1 class="center-text semi-bold" style="color: #00C060; margin-top: 2%;"><?php echo $mark; ?>&nbsp;<span style="color: #000000;" >/&nbsp;<?php echo --$x; ?></span></h1>
+                                        <h3 class="center-text semi-bold" style="color: #0edbec; margin-top: 2%">congratulations !!</h3>
+                                        <?php
+                                    } else if ($mark > 0) {
+                                        ?>
+                                        <h1 class="center-text semi-bold" style="color: #03c6ff; margin-top: 2%;"><?php echo $mark; ?>&nbsp;<span style="color: #000000;" >/&nbsp;<?php echo --$x; ?></span></h1>
+                                        <h3 class="center-text semi-bold" style="margin-top: 2%">Good&nbsp Luck&nbsp Next&nbsp time !!</h3>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <h1 class="center-text semi-bold" style="color: #f61818; margin-top: 2%;"><?php echo $mark; ?>&nbsp;<span style="color: #000000;" >/&nbsp;<?php echo --$x; ?></span></h1>
+                                        <h6 class="center-text semi-bold" style="color: #800080; margin-top: 2%">Don't&nbsp Worry&nbsp It&nbsp happen's !</h6>
+                                        <h3 class="center-text semi-bold" style="color: #008000; margin-top: 2%">Good&nbsp Luck&nbsp Next&nbsp time !</h3>
+                                        <?php
+                                    }
+                                    ?>
 
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
 
+                    <div class="span12">
+                        <div class="grid simple horizontal orange">
+                            <div class="grid-title ">
+                                <h4>Your Marks</h4>
+                                <div class="tools">
+                                    <a href="javascript:;" class="collapse"></a>
+                                    <a href="#grid-config" data-toggle="modal" class="config"></a>
+                                    <a href="javascript:;" class="reload"></a>
+                                </div>
+                            </div>
+                            <div class="grid-body">
+                                <div class="fb">
+                                    
                                 </div>
                             </div>
                         </div>   
@@ -181,5 +216,5 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
         <!-- END CORE TEMPLATE JS -->
     </div></body>
 <?php
-session_destroy();
+//session_destroy();
 ?>

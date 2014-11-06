@@ -15,20 +15,20 @@ if (!empty($_POST)) {
 //load and connect to MySQL database stuff
     require("config.inc.php");
 
-    $RollNo = $_SESSION['sess_RollNo'];
-    $Ex_id = $_SESSION['Ex_id'];
-    $s_dept = $_SESSION['S_Dept'];
-    
+
 //execute query
-    
-    $query = "select `d_name`,`id`,`E_pass`,`rno` from `department`,`exam`,`student` "
-            . "where `E_pass` = :Expass and `rno` = :RollNo and `department`.`d_id` in(select `d_id` from `student` where `rno`=:RollNo);";
-    
+
+    $query = "select `d_name`,`student`.`rno`,`exam`.`id` "
+            . "from `department`,`student`,`exam` "
+            . "where `student`.`rno`=:RollNo and "
+            . " `exam`.`E_pass`=:Expass and "
+            . " `department`.`d_id` = `exam`.`d_id` = `student`.`d_id`;";
+
     $query_params = array(
         ':RollNo' => $_POST['RollNo'],
         ':Expass' => $_POST['Expass']
     );
-    
+
     try {
         $stmt = $db->prepare($query);
         $result = $stmt->execute($query_params);
@@ -41,64 +41,89 @@ if (!empty($_POST)) {
     }
 
 // Finally, we can retrieve all of the found rows into an array using fetchAll 
-    $rows = $stmt->fetchAll();
-
+    $rows = $stmt->fetch();
 
     if ($rows) {
 
 
+        $response["success"] = 0.5;
+        $response["message"] = "Login successful!";
 
-//        $response["posts"] = array();
+        session_regenerate_id();
+        $_SESSION['sess_RollNo'] = $rows['rno'];
+        $_SESSION['S_Dept'] = $rows['d_name'];
+        $_SESSION['Ex_id'] = $rows['id'];
 
-        foreach ($rows as $row) {
-//            $post = array();
-
-            $RollNo = $_POST['RollNo'];
-            $Expass = $_POST['Expass'];
-
-
-            /*
-             * This code is used get encrypted password and check it with save in DB
-             */
-            //$password = getEncryptedData($password, $row['salt_sha1a'], $row['salt_sha1b'], $row['salt_sha256'], $row['salt_sha384'], $row['salt_sha512']);
-
-            if ($Expass == $row['E_pass']) {
-
-                //AfterSuccessfulLogin($db);
-                $response["success"] = 0.5;
-                $response["message"] = "Login successful!";
-                
-                session_regenerate_id();
-                $_SESSION['sess_RollNo'] = $row["rno"];
-                $_SESSION['S_Dept'] = $row["d_name"];
-                $_SESSION['Ex_id'] = $row["id"];
-                
-                $response["success"] = 1;
-                $response["message"] = "Session Store successful!";
+        $response["success"] = 1;
+        $response["message"] = "Session Store successful!";
 
 
-                $response["RollNo"] = $_SESSION['sess_RollNo'];
-                $response["Department"] = $_SESSION['S_Dept'];
-                $response["Exam_id"] = $_SESSION['Ex_id'];
-                
-            } else {
-                //AfterUnsuccessfulLogin($db);
-                $response["success"] = -2;
-                $response["message"] = "invalied  Password!";
-                die(json_encode($response));
-            }
-            //update our repsonse JSON data
-//            array_push($response["posts"], $post);
-        }
-
-        // echoing JSON response
+        $response["RollNo"] = $_SESSION['sess_RollNo'];
+        $response["Department"] = $_SESSION['S_Dept'];
+        $response["Exam_id"] = $_SESSION['Ex_id'];
+        
         echo json_encode($response);
+        
     } else {
-       // AfterUnsuccessfulLogin($db);
-        $response["success"] = -1;
-        $response["message"] = "invalied username ";
+        //AfterUnsuccessfulLogin($db);
+        $response["success"] = -2;
+        $response["message"] = "invalied  Password!";
         die(json_encode($response));
     }
+
+    /* if ($rows) {
+
+
+
+      //        $response["posts"] = array();
+
+      foreach ($rows as $row) {
+      //            $post = array();
+
+      $RollNo = $_POST['RollNo'];
+      $Expass = $_POST['Expass'];
+
+
+
+
+
+      if ($Expass == $row['E_pass']) {
+
+      //AfterSuccessfulLogin($db);
+      $response["success"] = 0.5;
+      $response["message"] = "Login successful!";
+
+      session_regenerate_id();
+      $_SESSION['sess_RollNo'] = $row["rno"];
+      $_SESSION['S_Dept'] = $row["d_name"];
+      $_SESSION['Ex_id'] = $row["id"];
+
+      $response["success"] = 1;
+      $response["message"] = "Session Store successful!";
+
+
+      $response["RollNo"] = $_SESSION['sess_RollNo'];
+      $response["Department"] = $_SESSION['S_Dept'];
+      $response["Exam_id"] = $_SESSION['Ex_id'];
+
+      } else {
+      //AfterUnsuccessfulLogin($db);
+      $response["success"] = -2;
+      $response["message"] = "invalied  Password!";
+      die(json_encode($response));
+      }
+      //update our repsonse JSON data
+      //            array_push($response["posts"], $post);
+      }
+
+      // echoing JSON response
+      echo json_encode($response);
+      } else {
+      // AfterUnsuccessfulLogin($db);
+      $response["success"] = -1;
+      $response["message"] = "invalied username ";
+      die(json_encode($response));
+      } */
 
 
 

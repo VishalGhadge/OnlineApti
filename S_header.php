@@ -23,7 +23,7 @@
                     <li class="quicklinks"> <a href="#" class=""><div class="iconset top-reload"></div> </a> </li> 
                 </ul>
                 <ul class="nav quick-section">
-                    <h4><p class="text-info" >Department of <?php echo $s_dept ?>&nbsp;<?php echo $Ex_id ?></p></h4>
+                    <h4><p class="text-info" >Department of <?php echo $s_dept ?>&nbsp;<?php echo $Ex_id ?>&nbsp;</p></h4>
                 </ul>
             </div>
             <!-- END TOP NAVIGATION MENU -->
