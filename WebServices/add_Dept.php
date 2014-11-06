@@ -73,7 +73,30 @@ if (!empty($_POST)) {
         echo $ex;
         die(json_encode($response));
     }
+    
+    $cnt3 = 1;
 
+    $query3 = "create table result_$department(id varchar(7) references exam(id),"
+            . "rno int references student(rno),";
+    
+    for ($cnt3 = 1; $cnt3 <= 30; $cnt3++) {
+        
+        $query3 .= "a_$cnt3 int NOT NULL default '0',";
+    }
+    $query3 .= "total int NOT NULL default '0');";
+    
+    
+    try {
+        $stmt3 = $db->prepare($query3);
+        $result3 = $stmt3->execute();
+    } catch (PDOException $ex) {
+        $response["success"] = 0;
+        $response["message"] = "Database Error!";
+        $response["details"] = $ex;
+
+        echo $ex;
+        die(json_encode($response));
+    }
 
     $response["success"] = 1;
     $response["message"] = "Deparment Addedd successful!";

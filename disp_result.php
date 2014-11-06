@@ -122,7 +122,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                             <div class="grid-body">
                                 <div>
                                     <h2 class="center-text" style="color: #FFA500;">Your Total<span class="semi-bold" style="color: #00ced1;"> Marks</span></h2>
-                                    <h1 class="center-text semi-bold" style="color: #00C060; margin-top: 2%;"><?php echo $mark; ?>&nbsp;/&nbsp;<?php echo $x; ?></h1> 
+                                    <h1 class="center-text semi-bold" style="color: #00C060; margin-top: 2%;"><?php echo $mark; ?>&nbsp;/&nbsp;<?php echo --$x; ?></h1> 
 
 
                                 </div>

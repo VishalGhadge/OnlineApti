@@ -753,7 +753,7 @@ jQuery(window).load(function() {
         });
         if (!error) {
 //            document.forms['registration_form'].submit();
-            //add_Department();
+            add_Department();
         }
     }
 
@@ -772,18 +772,14 @@ jQuery(window).load(function() {
 
 
 //            var rez = JSON.parse(response);
-                    jQuery('.add_department .result')
-                            .toggleClass('sc_infobox_style_error', false)
-                            .toggleClass('sc_infobox_style_success', false);
+                    jQuery('.add_department .result').toggleClass('sc_infobox_style_error', false).toggleClass('sc_infobox_style_success', false);
+                    
                     if (rez.success == 1) {
-                        jQuery('.add_department .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
+                        jQuery('.add_department .result').addClass('sc_infobox_style_success').html(rez.message);
                         //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
                         setTimeout('window.location.reload();', 500);
 
                         jQuery('#a_name').val('');
-
-
-
 //                       
                     } else if (rez.success == -1) {
                         jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
@@ -797,7 +793,7 @@ jQuery(window).load(function() {
                         jQuery('.add_department .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
                     }
                     jQuery('.add_department .result').fadeIn(500);
-                    setTimeout("jQuery('.add_department .result').fadeOut()", 6000);
+                    jQuery('.add_department .result').fadeOut(1000)
 
 //            console.log("session destroys");
 //            location.reload();

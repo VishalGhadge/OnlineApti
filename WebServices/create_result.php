@@ -3,7 +3,7 @@ if (!empty($_POST)) {
 //load and connect to MySQL database stuff
     require("config.inc.php");
 
-    require("stopsnopping.php");
+    //require("stopsnopping.php");
     $Admin_Id = $_SESSION['sess_Admin_Id'];
     $department = $_POST['de_name'];
 
@@ -43,7 +43,7 @@ if (!empty($_POST)) {
 } else {
     ?>
     <h1>Login</h1> 
-    <form action="temp.php" method="post">
+    <form action="create_result.php" method="post">
         Name: <input type="text" name="de_name" id="de_name" /> 
 
         <br /><br /> 
