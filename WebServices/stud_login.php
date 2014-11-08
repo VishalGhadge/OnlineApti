@@ -22,7 +22,7 @@ if (!empty($_POST)) {
             . "from `department`,`student`,`exam` "
             . "where `student`.`rno`=:RollNo and "
             . " `exam`.`E_pass`=:Expass and "
-            . " `department`.`d_id` = `exam`.`d_id` = `student`.`d_id`;";
+            . " `department`.`d_id` = `exam`.`d_id`;";
 
     $query_params = array(
         ':RollNo' => $_POST['RollNo'],

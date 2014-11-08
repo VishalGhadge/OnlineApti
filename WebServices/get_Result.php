@@ -75,6 +75,21 @@ if ($rows) {
         }
     }
 
+    $query2 = "UPDATE `result_$s_dept` SET `total` = $mark where `result_$s_dept`.`id`='$Ex_id' and `result_$s_dept`.`rno`= $RollNo ;";
+
+
+    //execute query
+    try {
+        $stmt = $db->prepare($query2);
+        $result = $stmt->execute();
+    } catch (PDOException $ex) {
+        $response["success"] = 0;
+        $response["message"] = "Database Error!";
+        $response["details"] = $ex;
+
+        die(json_encode($response));
+    }
+
 
     $response["success"] = 1;
     $response["message"] = $mark;
