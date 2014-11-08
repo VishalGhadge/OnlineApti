@@ -150,7 +150,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                     <div class="span12">
                         <div class="grid simple horizontal orange">
                             <div class="grid-title ">
-                                <h4>Your Marks</h4>
+                                <h4>Plz write feedback </h4>
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse"></a>
                                     <a href="#grid-config" data-toggle="modal" class="config"></a>
@@ -159,7 +159,14 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                             </div>
                             <div class="grid-body">
                                 <div class="fb">
-                                    
+                                    <form action="">
+                                        <div class="row-fluid">
+                                            <textarea id="fback" name="fback" class="span11" placeholder="Write here..." rows="5"></textarea>
+                                        </div>
+
+                                    </form>
+                                    <button type="button" id="fb_submit" name="fb_submit" class="btn btn-primary btn-cons" onclick="get_stdInfo(<?php echo $RollNo; ?>, '<?php echo $s_dept; ?>')"><i class="icon-ok"></i>&nbsp;Submit</button>
+                                    <div class="result sc_infobox success" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>   
@@ -215,6 +222,159 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
 
         <!-- END CORE TEMPLATE JS -->
     </div></body>
+
+<script type="text/javascript">
+                                        function get_stdInfo(rno, dept) {
+
+                                            var error_msg_box = null;
+
+                                            //console.log('click');
+                                            validate_fback();
+                                            //e.preventDefault();
+                                            //return false;
+                                            // Check Info to Update ..
+                                            function validate_fback() {
+                                                var error = formValidate(jQuery(".fb form"), {
+                                                    error_message_show: true,
+                                                    error_message_time: 2000,
+                                                    error_message_class: "sc_infobox sc_infobox_style_error",
+                                                    error_fields_class: "error_fields_class",
+                                                    exit_after_first_error: true,
+                                                    rules: [
+                                                        {
+                                                            field: "fback",
+                                                            min_length: {value: 1, message: "Plz write something !!"},
+                                                            //max_length: {value: 20, message: "The Name is too laong"},
+                                                            //mask: {value: "/^[a-z]+$/", message: "Number, Caps, symbols, Space not allowed"},
+                                                        }
+                                                    ]
+                                                });
+                                                if (!error) {
+//            document.forms['registration_form'].submit();
+                                                    save_fback();
+                                                }
+                                            }
+
+                                            function  save_fback() {
+
+                                                //jQuery(".loader img").fadeIn(100);
+
+                                                jQuery('.fb .result').removeAttr('style');
+                                                jQuery.post('WebServices/add_fback.php',
+                                                        {
+                                                            fback: jQuery('#fback').val(),
+                                                            rno: rno,
+                                                            dept: dept,
+                                                        },
+                                                        function(rez) {
+
+
+//            var rez = JSON.parse(response);
+                                                            jQuery('.fb .result').toggleClass('sc_infobox_style_error', false).toggleClass('sc_infobox_style_success', false);
+
+                                                            if (rez.success == 1) {
+                                                                jQuery('.fb .result').addClass('sc_infobox_style_success').html(rez.message);
+
+                                                                setTimeout('window.location.reload();', 500);
+//                       
+                                                            } else if (rez.success == -1) {
+                                                                jQuery('.fb .result').addClass('sc_infobox_style_error').html(rez.message);
+
+                                                            } else {
+                                                                jQuery('.fb .result').addClass('sc_infobox_style_error').html(rez.message);
+                                                            }
+                                                            jQuery('.fb .result').fadeIn(500);
+                                                            jQuery('.fb .result').fadeOut(1000)
+
+//            console.log("session destroys");
+//            location.reload();
+//            
+//            
+                                                            //jQuery(".loader img").fadeOut(200);
+                                                        }, 'json');
+
+
+
+                                            }
+
+                                            function formValidate(form, opt) {
+                                                "use strict";
+                                                var error_msg = '';
+                                                form.find(":input").each(function() {
+                                                    if (error_msg !== '' && opt.exit_after_first_error) {
+                                                        return;
+                                                    }
+                                                    for (var i = 0; i < opt.rules.length; i++) {
+                                                        if (jQuery(this).attr("name") === opt.rules[i].field) {
+                                                            var val = jQuery(this).val();
+                                                            var error = false;
+                                                            if (typeof (opt.rules[i].min_length) === 'object') {
+                                                                if (opt.rules[i].min_length.value > 0 && val.length < opt.rules[i].min_length.value) {
+                                                                    if (error_msg === '') {
+                                                                        jQuery(this).get(0).focus();
+                                                                    }
+                                                                    error_msg += '<p class="error_item">' + (typeof (opt.rules[i].min_length.message) !== 'undefined' ? opt.rules[i].min_length.message : opt.error_message_text) + '</p>';
+                                                                    error = true;
+                                                                }
+                                                            }
+                                                            if ((!error || !opt.exit_after_first_error) && typeof (opt.rules[i].max_length) === 'object') {
+                                                                if (opt.rules[i].max_length.value > 0 && val.length > opt.rules[i].max_length.value) {
+                                                                    if (error_msg === '') {
+                                                                        jQuery(this).get(0).focus();
+                                                                    }
+                                                                    error_msg += '<p class="error_item">' + (typeof (opt.rules[i].max_length.message) !== 'undefined' ? opt.rules[i].max_length.message : opt.error_message_text) + '</p>';
+                                                                    error = true;
+                                                                }
+                                                            }
+                                                            if ((!error || !opt.exit_after_first_error) && typeof (opt.rules[i].mask) === 'object') {
+                                                                if (opt.rules[i].mask.value !== '') {
+                                                                    var regexp = new RegExp(opt.rules[i].mask.value);
+                                                                    if (!regexp.test(val)) {
+                                                                        if (error_msg === '') {
+                                                                            jQuery(this).get(0).focus();
+                                                                        }
+                                                                        error_msg += '<p class="error_item">' + (typeof (opt.rules[i].mask.message) !== 'undefined' ? opt.rules[i].mask.message : opt.error_message_text) + '</p>';
+                                                                        error = true;
+                                                                    }
+                                                                }
+                                                            }
+                                                            if ((!error || !opt.exit_after_first_error) && typeof (opt.rules[i].equal_to) === 'object') {
+                                                                if (opt.rules[i].equal_to.value !== '' && val !== jQuery(jQuery(this).get(0).form[opt.rules[i].equal_to.value]).val()) {
+                                                                    if (error_msg === '') {
+                                                                        jQuery(this).get(0).focus();
+                                                                    }
+                                                                    error_msg += '<p class="error_item">' + (typeof (opt.rules[i].equal_to.message) !== 'undefined' ? opt.rules[i].equal_to.message : opt.error_message_text) + '</p>';
+                                                                    error = true;
+                                                                }
+                                                            }
+                                                            if (opt.error_fields_class !== '') {
+                                                                jQuery(this).toggleClass(opt.error_fields_class, error);
+                                                            }
+                                                        }
+                                                    }
+                                                });
+
+
+                                                if (error_msg !== '' && opt.error_message_show) {
+                                                    error_msg_box = form.find(".result");
+                                                    if (error_msg_box.length === 0) {
+                                                        form.append('<div class="result"></div>');
+                                                        error_msg_box = form.find(".result");
+                                                    }
+                                                    if (opt.error_message_class) {
+                                                        error_msg_box.toggleClass(opt.error_message_class, true);
+                                                    }
+                                                    error_msg_box.html(error_msg).fadeIn();
+                                                    setTimeout(function() {
+                                                        error_msg_box.fadeOut();
+                                                    }, opt.error_message_time);
+                                                }
+                                                return error_msg !== '';
+                                            }
+
+                                        }
+</script>
+
 <?php
-//session_destroy();
+session_destroy();
 ?>

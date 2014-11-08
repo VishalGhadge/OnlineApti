@@ -23,7 +23,17 @@
                     <li class="quicklinks"> <a href="#" class=""><div class="iconset top-reload"></div> </a> </li> 
                 </ul>
                 <ul class="nav quick-section">
-                    <h4><p class="text-info" >Department of <?php echo $s_dept ?>&nbsp;<?php echo $Ex_id ?>&nbsp;</p></h4>
+                    <li>
+                        <p class="text-info" style="font-size: 18px;" >Department of <?php echo $s_dept ?></p>
+                    </li>
+                    <li class="quicklinks"> <span class="h-seperate"></span></li>
+                    <li>
+                        <p class="text-info" style="font-size: 18px;" ><span style="color: #005555;"><?php echo $Ex_id; ?></span></p>
+                    </li>
+                    <li class="quicklinks"> <span class="h-seperate"></span></li>
+                    <li>
+                        <p class="text-info" style=" font-size: 18px;" ><span style="color: #FF0000;"><?php echo $msys; ?></span></p>
+                    </li>
                 </ul>
             </div>
             <!-- END TOP NAVIGATION MENU -->

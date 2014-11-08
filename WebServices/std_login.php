@@ -69,8 +69,8 @@ if (!empty($_POST)) {
 
                 $response["success"] = 1;
                 $response["message"] = "Session Store successful!";
-
-
+                
+                
                 $response["Admin_Id"] = $_SESSION['sess_Admin_Id'];
                 $response["Name"] = $_SESSION['sess_Name'];
                // $response["Profile_Image_Url"] = $_SESSION['sess_Profile_Image_Url'];

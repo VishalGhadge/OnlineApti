@@ -17,6 +17,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     $RollNo = $_SESSION['sess_RollNo'];
     $Ex_id = $_SESSION['Ex_id'];
     $s_dept = $_SESSION['S_Dept'];
+    $msys = $_SESSION['mrk_sys'];
 }
 ?>
 

@@ -17,8 +17,10 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     $RollNo = $_SESSION['sess_RollNo'];
     $Ex_id = $_SESSION['Ex_id'];
     $s_dept = $_SESSION['S_Dept'];
+    $msys = $_SESSION['mrk_sys'];
 }
 ?>
+    
 
 
 
@@ -76,7 +78,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     <!-- BEGIN CONTAINER -->
     <div class="page-container row-fluid"> 
         <!-- BEGIN SIDEBAR -->
-        
+
         <div class="footer-widget">		
             <div class="progress transparent progress-success progress-small no-radius no-margin">
                 <div data-percentage="79%" class="bar animate-progress-bar"></div>		
@@ -109,7 +111,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                         </div>
                         <div class="span4" >
                             <div style="margin-left: 30%">
-                            <h3 class="semi-bold"  style="color: #004c4c" >1&nbsp;-&nbsp;10&nbsp;</h3>
+                                <h3 class="semi-bold"  style="color: #004c4c" >1&nbsp;-&nbsp;10&nbsp;</h3>
                             </div>
                         </div>
                         <div class="span4">
@@ -122,6 +124,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
             </div>
             <div id="container">
                 <?php include './WebServices/get_SQuestion_1.php'; ?>
+
             </div>
         </div>
     </div>
@@ -131,7 +134,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     <!-- END CORE TEMPLATE JS -->
 
     <script type="text/javascript">
-        function getAns(x,c) {
+        function getAns(x, c) {
 
             var error_msg_box = null;
             console.log('click');
@@ -139,7 +142,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
             e.preventDefault();
             return false;
             // Check Info to Update ..
-            
+
             function  Update_Answer() {
 
                 //jQuery(".Answer_" + x + " .loader img").fadeIn(100);
@@ -266,6 +269,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     <!-- END CORE PLUGINS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
     <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
     <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
@@ -286,5 +290,8 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     <script src="assets/js/demo.js" type="text/javascript"></script>
 
     <script src="assets/js/lib.js" type="text/javascript"></script>
+
+
+
 
 </div></body>

@@ -18,7 +18,7 @@ if (!empty($_POST)) {
 
 //execute query
 
-    $query = "select `d_name`,`student`.`rno`,`exam`.`id` "
+    $query = "select `d_name`,`student`.`rno`,`exam`.`id`,`mrk_Sys` "
             . "from `department`,`student`,`exam` "
             . "where `student`.`rno`=:RollNo and "
             . " `exam`.`E_pass`=:Expass and "
@@ -46,24 +46,40 @@ if (!empty($_POST)) {
     if ($rows) {
 
 
+
         $response["success"] = 0.5;
         $response["message"] = "Login successful!";
+        $mrk = "";
+        
+        if($rows['mrk_Sys'] == 1) {
+            $mrk = "+ve";
+        }
+        else {
+            $mrk = "-ve";
+        }
 
         session_regenerate_id();
         $_SESSION['sess_RollNo'] = $rows['rno'];
         $_SESSION['S_Dept'] = $rows['d_name'];
         $_SESSION['Ex_id'] = $rows['id'];
+        $_SESSION['mrk_sys'] = $mrk;
+
+        
+        
+        
+        
 
         $response["success"] = 1;
         $response["message"] = "Session Store successful!";
 
 
+
+
         $response["RollNo"] = $_SESSION['sess_RollNo'];
         $response["Department"] = $_SESSION['S_Dept'];
         $response["Exam_id"] = $_SESSION['Ex_id'];
-        
+
         echo json_encode($response);
-        
     } else {
         //AfterUnsuccessfulLogin($db);
         $response["success"] = -2;
