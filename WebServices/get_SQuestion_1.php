@@ -37,7 +37,7 @@
             $x = 1;
             for ($x = 1; $x <= 10; $x++) {
 
-                $query = "select `Qno`,`Question`,`A`,`B`,`C`,`D`,`choice`,`time_stamp`,`Explanation`,`Name` "
+                $query = "select `Qno`,`Question`,`A`,`B`,`C`,`D`,`Name` "
                         . "from `$s_dept`,`admin` where "
                         . "`$s_dept`.`A_id` = `admin`.`A_id` and `$s_dept`.`Qno` = $x";
 
@@ -79,15 +79,13 @@
                                                 <h4 style="color: #0090D9;">Question No :  <span class="semi-bold" style="color: #0aa699">&nbsp;<?php echo $x; ?>&nbsp;</span></h4>
                                             </div>
                                             <div class="span4">
-                                            <!--<h4 style="color: #0090D9">Last Update : <?php echo $row['time_stamp']; ?></h4> -->
                                             </div>
-                                            <div class="span4">
+                                            <div class="span4 text-right" style="margin-left: 20%;" >
                                                 <h4 style="color: #0090D9">&nbsp;&nbsp;<?php echo $row['Name']; ?></h4>
                                             </div>
                                             <div class="tools">
                                                 <a class="collapse"  href="javascript:;"></a>
                                                 <a class="config" data-toggle="modal" href="#grid-config"></a>
-                                                <!-- <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> -->
                                             </div>
                                         </div>
                                     </div>

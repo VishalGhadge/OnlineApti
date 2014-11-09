@@ -3,8 +3,8 @@
 //load and connect to MySQL database stuff
     require("config.inc.php");
     $dept = $_SESSION['Dept'];
-    
-    
+
+
 
     //gets user's info based off of a username.
     $query = "select `student`.`rno` from `student` "
@@ -64,7 +64,7 @@
                         $e_cnt++;
                         $r1 = $row['rno'];
                         $rid = $row1['id'];
-                       
+
 
                         $query = "select `total` from `result_$dept` "
                                 . "where `result_$dept`.`rno` = $r1 and `result_$dept`.`id` = '$rid';";
@@ -83,11 +83,10 @@
                         }
 
                         $row2 = $stmt->fetch();
-                        
+
                         if ($row2) {
-                            
+
                             $tmark += $row2['total'];
-                            
                             ?>
                             <td><?php echo $row2['total']; ?></td>
                             <?php
@@ -98,18 +97,50 @@
 
 
 
-                $avg = $tmark / $e_cnt;
+                $avg = ($tmark / ($e_cnt*30));
+                
+                $avg = $avg*100;
                 
                 $post = array();
+
+                if ($avg >= 80) {
+                    ?>
+                    <td valign="middle">
+                        <div class="progress progress-success">
+                            <div data-percentage="0%"  id="pro" style="width: <?php echo $avg; ?>%;" class="bar"></div>
+                        </div>
+                    </td>
+                    <?php
+                } else if (($avg >= 60) && ($avg < 80)) {
+                    ?>
+                    <td valign="middle">
+                        <div class="progress progress-info">
+                            <div data-percentage="0%" id="pro" style="width: <?php echo $avg; ?>%;" class="bar"></div>
+                        </div>
+                    </td
+                    <?php
+                } else if (($avg >= 40) && ($avg < 60)) {
+                    ?>
+                    <td valign="middle">
+                        <div class="progress progress-warning">
+                            <div data-percentage="0%" id="pro" style="width: <?php echo $avg; ?>%;" class="bar"></div>
+                        </div>
+                    </td>
+                    <?php
+                } else if(($avg >= 0) && ($avg < 40) ) {
+                    ?>
+                    <td valign="middle">
+                        <div class="progress progress-danger">
+                            <div data-percentage="0%" id="pro" style="width: <?php echo $avg; ?>%;" class="bar"></div>
+                        </div>
+                    </td>
+                    <?php
+                }
                 ?>
-                <td valign="middle">
-                    <div class="progress progress-success">
-                        <div data-percentage="0%" id="pro" style="width: <?php echo $avg; ?>%;" class="bar"></div>
-                    </div>
-                </td
+
             </tr>
+           
             <?php
-            
             array_push($response["posts"], $post);
         }
     }

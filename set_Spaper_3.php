@@ -105,17 +105,15 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                     <div class="row-fluid">
                         <div class="span4">
                             <a href="set_Spaper_2.php">
-                                <i class="icon-chevron-sign-left" ></i>
+                                <i style="color: #2aa198;" class="icon-chevron-sign-left" ></i>
                             </a>
                         </div>
-                        <div class="span4" >
-                            <div style="margin-left: 30%">
+                        <div class="span4 text-center" >
                             <h3 class="semi-bold"  style="color: #004c4c" >21&nbsp;-&nbsp;30&nbsp;</h3>
-                            </div>
                         </div>
                         <div class="span4">
-                            <a href="set_Spaper_3.php">
-                                <i class="icon-chevron-sign-right disabled" style="margin-left: 90%"></i>
+                            <a>
+                                <i style="margin-left: 90%;" class="icon-chevron-sign-right disabled"></i>
                             </a>
                         </div>
                     </div>
@@ -123,6 +121,25 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
             </div>
             <div id="container">
                 <?php include './WebServices/get_SQuestion_3.php'; ?>
+            </div>
+            <div class="content">  
+                <div class="page-title">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <a href="set_Spaper_2.php">
+                                <i style="color: #2aa198;" class="icon-chevron-sign-left" ></i>
+                            </a>
+                        </div>
+                        <div class="span4 text-center" >
+                            <h3 class="semi-bold"  style="color: #004c4c" >21&nbsp;-&nbsp;30&nbsp;</h3>
+                        </div>
+                        <div class="span4">
+                            <a>
+                                <i style="margin-left: 90%;" class="icon-chevron-sign-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

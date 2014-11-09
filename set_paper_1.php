@@ -103,18 +103,16 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                 <div class="page-title">
                     <div class="row-fluid">
                         <div class="span4">
-                            <a href="set_paper_1.php">
-                                <i class="icon-chevron-sign-left" ></i>
+                            <a>
+                                <i class="icon-chevron-sign-left disabled" ></i>
                             </a>
                         </div>
-                        <div class="span4" >
-                            <div style="margin-left: 30%">
+                        <div class="span4 text-center" >
                             <h3 class="semi-bold"  style="color: #004c4c" >1&nbsp;-&nbsp;10&nbsp;</h3>
-                            </div>
                         </div>
                         <div class="span4">
                             <a href="set_paper_2.php">
-                                <i class="icon-chevron-sign-right" style="margin-left: 90%"></i>
+                                <i style="color: #2aa198; margin-left: 90%;" class="icon-chevron-sign-right"></i>
                             </a>
                         </div>
                     </div>
@@ -122,6 +120,25 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
             </div>
             <div id="container">
                 <?php include './WebServices/get_Question_1.php'; ?>
+            </div>
+            <div class="content">  
+                <div class="page-title">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <a>
+                                <i  class="icon-chevron-sign-left disabled" ></i>
+                            </a>
+                        </div>
+                        <div class="span4 text-center" >
+                            <h3 class="semi-bold"  style="color: #004c4c" >1&nbsp;-&nbsp;10&nbsp;</h3>
+                        </div>
+                        <div class="span4">
+                            <a href="set_paper_2.php">
+                                <i style="color: #2aa198; margin-left: 90%;" class="icon-chevron-sign-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

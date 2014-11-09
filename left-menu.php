@@ -71,7 +71,7 @@
                 if ($Menu_Select == 5) {
                     echo 'class="active"';
                 }
-                ?>> <a href="view-campaign.php">Student Marks</a> </li>
+                ?>> <a href="stud_info.php">Student Marks</a> </li>
                 <li <?php
                 if ($Menu_Select == 6) {
                     echo 'class="active"';

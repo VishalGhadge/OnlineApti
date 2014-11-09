@@ -6,6 +6,7 @@
             <name>OnlineApti</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>avg</word>
             <word>pdf</word>
         </spellchecker-wordlist>
     </configuration>
