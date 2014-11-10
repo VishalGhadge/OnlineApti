@@ -83,7 +83,7 @@ if (!empty($_POST)) {
         
         $query3 .= "a_$cnt3 int NOT NULL default '0',";
     }
-    $query3 .= "total int NOT NULL default '0');";
+    $query3 .= "total int NULL );";
     
     
     try {

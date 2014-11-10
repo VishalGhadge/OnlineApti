@@ -20,7 +20,7 @@
                 <ul class="nav quick-section">
                     <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle"><div class="iconset top-menu-toggle-dark"></div> </a> </li>        
                     <li class="quicklinks"> <span class="h-seperate"></span></li>
-                    <li class="quicklinks"> <a href="#" class=""><div class="iconset top-reload"></div> </a> </li> 
+                    <li class="quicklinks"> <a href="" class=""><i style="color: #2aa198;" class=" icon-download" onclick="window.open('http://localhost:81/OnlineApti/WebServices/Que_Exp.php')"></i> </a> </li> 
                 </ul>
                 <ul class="nav quick-section">
                     <h4><p class="text-info" >Department of <?php echo $dept ?></p></h4>

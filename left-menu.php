@@ -66,17 +66,13 @@
                 if ($Menu_Select == 3) {
                     echo 'class="active"';
                 }
-                ?>> <a href="add_campaign.php">Add / Remove</a> </li>
+                ?>> <a href="Student_op.php">Add / Remove</a> </li>
                 <li <?php
                 if ($Menu_Select == 5) {
                     echo 'class="active"';
                 }
-                ?>> <a href="stud_info.php">Student Marks</a> </li>
-                <li <?php
-                if ($Menu_Select == 6) {
-                    echo 'class="active"';
-                }
-                ?>> <a href="Campaign_problems.php"> Add Problems For Campaign </a> </li>
+                ?>> <a href="stud_marks.php">Student Marks</a> </li>
+                
 
             </ul>
         </li>

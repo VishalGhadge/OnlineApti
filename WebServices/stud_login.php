@@ -45,39 +45,56 @@ if (!empty($_POST)) {
 
     if ($rows) {
 
+        $rll = $rows['rno'];
+        $dp = $rows['d_name'];
+        $id = $rows['id'];
 
+        $query = "select `total` from `result_$dp` where `result_$dp`.`rno` = $rll and `result_$dp`.`id`='$id'";
 
-        $response["success"] = 0.5;
-        $response["message"] = "Login successful!";
-        $mrk = "";
-        
-        if($rows['mrk_Sys'] == 1) {
-            $mrk = "+ve";
+        try {
+            $stmt = $db->prepare($query);
+            $result = $stmt->execute($query_params);
+        } catch (PDOException $ex) {
+            $response["success"] = 0;
+            $response["message"] = "Database Error!";
+            $response["details"] = $ex;
+
+            die(json_encode($response));
         }
-        else {
-            $mrk = "-ve";
+        
+        $row = $stmt->fetch();
+
+        if ($row['total'] === NULL) {
+            $response["success"] = 0.5;
+            $response["message"] = "Login successful!";
+            $mrk = "";
+
+            if ($rows['mrk_Sys'] == 1) {
+                $mrk = "+ve";
+            } else {
+                $mrk = "-ve";
+            }
+
+            session_regenerate_id();
+            $_SESSION['sess_RollNo'] = $rows['rno'];
+            $_SESSION['S_Dept'] = $rows['d_name'];
+            $_SESSION['Ex_id'] = $rows['id'];
+            $_SESSION['mrk_sys'] = $mrk;
+
+            $response["success"] = 1;
+            $response["message"] = "Session Store successful!";
+
+
+            $response["RollNo"] = $_SESSION['sess_RollNo'];
+            $response["Department"] = $_SESSION['S_Dept'];
+            $response["Exam_id"] = $_SESSION['Ex_id'];
+            
+        } else {
+            //AfterUnsuccessfulLogin($db);
+            $response["success"] = -2;
+            $response["message"] = "You have already attended the exam !!";
+            die(json_encode($response));
         }
-
-        session_regenerate_id();
-        $_SESSION['sess_RollNo'] = $rows['rno'];
-        $_SESSION['S_Dept'] = $rows['d_name'];
-        $_SESSION['Ex_id'] = $rows['id'];
-        $_SESSION['mrk_sys'] = $mrk;
-
-        
-        
-        
-        
-
-        $response["success"] = 1;
-        $response["message"] = "Session Store successful!";
-
-
-
-
-        $response["RollNo"] = $_SESSION['sess_RollNo'];
-        $response["Department"] = $_SESSION['S_Dept'];
-        $response["Exam_id"] = $_SESSION['Ex_id'];
 
         echo json_encode($response);
     } else {

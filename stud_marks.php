@@ -179,13 +179,5 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
         <script src="assets/js/demo.js" type="text/javascript"></script>
         <script src="assets/js/lib.js" type="text/javascript"></script>
 
-        <script type="text/javascript">
-    $('.input-append.date').datepicker({
-        autoclose: true,
-        todayHighlight: true,
-        format: 'yyyy-mm-dd'
-    });
-        </script>
-
         <!-- END CORE TEMPLATE JS -->
     </div></body>

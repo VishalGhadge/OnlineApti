@@ -4,11 +4,11 @@ if (!empty($_POST)) {
 
 //load and connect to MySQL database stuff
     require("config.inc.php");
-    
-    
+
+
     $Admin_Name = $_SESSION['sess_Name'];
     $dept = $_SESSION['Dept'];
-    
+
     $query = "select `d_id` from `department` where `d_name`='$dept'";
 
 
@@ -26,41 +26,41 @@ if (!empty($_POST)) {
     }
 
 // Finally, we can retrieve all of the found rows into an array using fetchAll 
-    $rows = $stmt->fetchAll();
+    $rows = $stmt->fetch();
 
     if ($rows) {
 
-        foreach ($rows as $row) {
-            $d_id = $row['d_id'];
 
-            $query = "insert into `exam`(`E_pass`,`E_Date`,`E_time`,`d_id`,`mrk_Sys`)"
-                    . "values(:e_pass,:e_date,:e_time,$d_id,:mrk_sys)";
+        $d_id = $rows['d_id'];
 
-            $query_params = array(
-                ':e_pass' => $_POST['e_pass'],
-                ':e_date' => $_POST['e_date'],
-                ':e_time' => $_POST['e_time'],
-                ':mrk_sys' => $_POST['mrk_sys']
-            );
+        $query = "insert into `exam`(`E_pass`,`E_Date`,`E_time`,`d_id`,`mrk_Sys`)"
+                . "values(:e_pass,:e_date,:e_time,$d_id,:mrk_sys)";
 
-            //time to run our query, and create the user
-            try {
-                
-                $stmt = $db->prepare($query);
-                $result = $stmt->execute($query_params);
-                $exm_id = $db->lastinsertid();
-                
-            } catch (PDOException $ex) {
-                $response["success"] = 0;
-                $response["message"] = "Database Error2. Please Try Again!";
-                $response["details"] = $ex;
+        $query_params = array(
+            ':e_pass' => $_POST['e_pass'],
+            ':e_date' => $_POST['e_date'],
+            ':e_time' => $_POST['e_time'],
+            ':mrk_sys' => $_POST['mrk_sys']
+        );
 
-                die(json_encode($response));
-            }
+        //time to run our query, and create the user
+        try {
 
-            $response["success"] = 1;
-            $response["message"] = "Exam created !!";
+            $stmt = $db->prepare($query);
+            $result = $stmt->execute($query_params);
+            $exm_id = $db->lastinsertid();
+        } catch (PDOException $ex) {
+            $response["success"] = 0;
+            $response["message"] = "Password Already Present !";
+            $response["details"] = $ex;
+
+            die(json_encode($response));
         }
+
+        $response["success"] = 1;
+        $response["message"] = "Exam created !!";
+        
+        
     } else {
         $response["success"] = -1;
         $response["message"] = "Can not execute !";

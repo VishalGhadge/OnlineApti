@@ -170,6 +170,56 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- change username  -->
+                        <div class="span6">
+                            <div class="grid simple">
+                                <div class="grid-title no-border">
+                                    <h4 style="color: #852b99;">Change <span class="semi-bold" style="color: #0aa699">&nbsp;Your Username</span></h4>
+                                    <div class="tools"> <a class="collapse" href="javascript:;"></a> <a class="config" data-toggle="modal" href="#grid-config"></a> <a class="reload" href="javascript:;"></a> <a class="remove" href="javascript:;"></a> </div>
+                                </div>
+
+                                <div class="grid-body no-border">
+                                    <div class="chng_usr">
+                                        <form action="" id="usr-form">
+                                            <div>
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">New Username :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="text" style="width:93%" name="name" id="name" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <div style="margin-top: 5px;">
+                                                <div class="row-fluid">
+                                                    <div class="span4">
+                                                        <h5><span class="semi-bold">Your Password :</span></h5>
+                                                    </div>
+                                                    <div class="span7">
+                                                        <input type="password" style="width:93%" name="pass" id="pass" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            <div class="result sc_infobox " style="display: none;"></div>
+                                            <footer>
+                                                <div class="row-fluid">
+                                                    <div class="span7" style="float: right;">
+                                                        <button type="button" id="ch_usr" class="btn btn-success btn-cons" style="float: right;">Change</button>
+                                                    </div>
+                                                </div>
+                                            </footer>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>		
                 </div>

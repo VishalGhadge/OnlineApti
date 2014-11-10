@@ -400,7 +400,101 @@ jQuery(window).load(function() {
 
 
     }
+    
+    
+    
+    // change user name
+    
+    jQuery('.chng_usr form').keypress(function(e) {
 
+        if (e.keyCode === 13) {
+            jQuery('.chng_usr #ch_usr').trigger('click');
+            e.preventDefault();
+            return false;
+        }
+    });
+    jQuery('.chng_usr #ch_usr').click(function(e) {
+
+        console.log('click');
+        validate_usr();
+        e.preventDefault();
+        return false;
+    });
+    // Check for validity Register Form
+    function validate_usr() {
+        var error = formValidate(jQuery(".chng_usr form"), {
+            error_message_show: true,
+            error_message_time: 5000,
+            error_message_class: "sc_infobox sc_infobox_style_error",
+            error_fields_class: "error_fields_class",
+            exit_after_first_error: true,
+            rules: [
+                {
+                    field: "name",
+                    min_length: {value: 1, message: "The Name cant be empty !!"},
+                    max_length: {value: 60, message: "The Name is too laong"}
+                },
+                {
+                    field: "pass",
+                    min_length: {value: 5, message: "The password can\'t be empty and shorter then 5 characters"},
+                    max_length: {value: 20, message: "Too long password"}
+                }
+            ]
+        });
+
+        if (!error) {
+//            document.forms['registration_form'].submit();
+
+            updt_usr();
+        }
+    }
+
+
+    /**
+     * This method is used for Admin registration
+     * @returns {undefined}
+     */
+    function  updt_usr() {
+
+        
+        jQuery('.chng_usr .result').removeAttr('style');
+        jQuery.post('WebServices/Updt_Usr.php',
+                {
+                    name: jQuery('#name').val(),
+                    pass: jQuery('#pass').val()
+                   
+                },
+        function(rez) {
+
+            jQuery('.chng_usr .result')
+                    .toggleClass('sc_infobox_style_error', false)
+                    .toggleClass('sc_infobox_style_success', false);
+            if (rez.success == 1) {
+                jQuery('.chng_usr .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
+                //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
+                setTimeout('window.location.reload();', 500);
+                jQuery('#name').val('');
+                jQuery('#pass').val('');
+
+//                       
+            } else if (rez.success == -1) {
+                jQuery('.chng_usr .result').addClass('sc_infobox_style_error').html(rez.message);
+                jQuery("#name").toggleClass("error_fields_class", true);
+
+            } else {
+                jQuery('.chng_usr .result').addClass('sc_infobox_style_error').html(rez.message);
+            }
+            jQuery('.chng_usr .result').fadeIn(500);
+            jQuery('.chng_usr .result').fadeOut(2000);
+
+//            console.log("session destroys");
+//            location.reload();
+            
+        }, 'json');
+
+
+
+    }
 
 
     // adding Exam ..!!
@@ -481,7 +575,7 @@ jQuery(window).load(function() {
                     .toggleClass('sc_infobox_style_error', false)
                     .toggleClass('sc_infobox_style_success', false);
             if (rez.success == 1) {
-                jQuery('.add_exm .result').addClass('sc_infobox_style_success').html('New Admin added Successfully !');
+                jQuery('.add_exm .result').addClass('sc_infobox_style_success').html('Exam added Successfully');
                 //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
                 setTimeout('window.location.reload();', 500);
                 jQuery('#e_pass').val('');
@@ -490,7 +584,7 @@ jQuery(window).load(function() {
                 
 //                       
             } else if (rez.success == -1) {
-                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html('Admin registration failed! ' + rez.message);
+                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html(rez.message);
 
 
                 jQuery("#e_pass").toggleClass("error_fields_class", true);
@@ -498,10 +592,10 @@ jQuery(window).load(function() {
 
 
             } else {
-                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html('failed to add Exam! ' + rez.message);
+                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html(rez.message);
             }
             jQuery('.add_exm .result').fadeIn(500);
-            setTimeout("jQuery('.add_exm .result').fadeOut()", 6000);
+            jQuery('.add_exm .result').fadeOut(1000);
 
 //            console.log("session destroys");
         }, 'json');

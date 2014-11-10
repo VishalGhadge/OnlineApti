@@ -332,6 +332,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                                                                                 </div>
                                                                                                 <div class="span7">
                                                                                                     <button type="button" id="add_ex" class="btn btn-info btn-cons" ><i class="icon-paste"></i> Edit</button>
+                                                                                                    <div class="result sc_infobox " style="display: none;"></div>
                                                                                                 </div>
                                                                                             </div>
 
@@ -347,7 +348,6 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                                         <?php require './WebServices/get_Exam.php'; ?>
                                                     </tbody>
                                                 </table>
-                                                <div class="result sc_infobox " style="display: none;"></div>
                                             </div>
                                         </div>
                                     </div>

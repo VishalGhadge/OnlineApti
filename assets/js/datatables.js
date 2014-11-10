@@ -162,6 +162,7 @@ $(document).ready(function() {
                     "sButtonText": "<i class='icon-cloud-download'></i>",
                     "aButtons": ["csv", "xls", "pdf", "copy"],
                     sSwfPath: "assets/plugins/jquery-datatable/extra/TableTools/media/swf/copy_csv_xls_pdf.swf"
+                    //assets/plugins/jquery-datatable/extra/TableTools/media/swf/copy_csv_xls_pdf.swf
                 }
             ]
         },
@@ -169,7 +170,7 @@ $(document).ready(function() {
         "aoColumnDefs": [
             {'bSortable': false, 'aTargets': [0]}
         ],
-        "aaSorting": [[1, "asc"]],
+        //"aaSorting": [[1, "asc"]],
         "oLanguage": {
             "sLengthMenu": "_MENU_ ",
             "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
@@ -254,7 +255,8 @@ $(document).ready(function() {
             "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
         },
     });
-    $("div.toolbar").html('<div class="table-tools-actions"><button class="btn btn-primary" style="margin-left:12px" id="test2">Add</button></div>');
+    $("div.toolbar").html('');
+    // <div class="table-tools-actions"><button class="btn btn-primary" style="margin-left:12px" id="test2">Add</button></div>
 
     $('#test2').on("click", function() {
         $("#quick-access").css("bottom", "0px");

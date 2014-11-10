@@ -141,6 +141,7 @@
             </tr>
            
             <?php
+            
             array_push($response["posts"], $post);
         }
     }
