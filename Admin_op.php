@@ -359,13 +359,6 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                         <div class="row-fluid">
                             <?php require './WebServices/get_Admin.php'; ?>
                         </div>
-
-
-
-
-
-
-
                     </div>
 
                 </div> 

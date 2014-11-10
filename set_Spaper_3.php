@@ -77,16 +77,17 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
     <!-- BEGIN CONTAINER -->
     <div class="page-container row-fluid"> 
         <!-- BEGIN SIDEBAR -->
-        
+        <?php require './S_left-menu.php'; ?>
         <div class="footer-widget">		
             <div class="progress transparent progress-success progress-small no-radius no-margin">
-                <div data-percentage="79%" class="bar animate-progress-bar"></div>		
+                <div data-percentage="100%" class="bar animate-progress-bar"></div>		
             </div>
             <div class="pull-right">
                 <div class="details-status">
-                    <span data-animation-duration="560" data-value="86" class="animate-number"></span>%
+                    <span data-animation-duration="560" data-value="100" class="animate-number"></span>%
                 </div>	
-                <a href="signIn.php"><i class="icon-off"></i></a></div>
+                <!--<a href="signIn.php"><i class="icon-off"></i></a>-->
+            </div>
         </div>
         <!-- END SIDEBAR --> 
         <!-- BEGIN PAGE CONTAINER-->

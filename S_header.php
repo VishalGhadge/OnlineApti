@@ -39,27 +39,16 @@
             <!-- END TOP NAVIGATION MENU -->
             <!-- BEGIN CHAT TOGGLER -->
             <div class="pull-right"> 
-                <div class="chat-toggler">	
-                    <div class="user-details"> 
-                        <div class="username">
-                            <h4 style="color: #06512F;"><span class="semi-bold"><?php echo $RollNo; ?></span></h4>									
-                        </div>						
-                    </div> 
-                </div>
+                
                 <ul class="nav quick-section ">
+                    <li>
+                        <p class="text-info" style="font-size: 20px;" ><span style="color: #15504c;"><?php echo $RollNo; ?></span></p>
+                    </li>
+                    <li class="quicklinks"> <span class="h-seperate"></span></li>
                     <li class="quicklinks"> 
                         <a data-toggle="dropdown" class="dropdown-toggle  pull-right" href="#">						
                             <div class="iconset top-settings-dark "></div> 	
                         </a>
-                        <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="dropdownMenu">
-                            <li><a href="index.php"> My Account</a>
-                            </li>
-                            <li><a href="calender.html">My Schedules</a>
-                            </li>
-
-                            <li class="divider"></li>                
-                            <li><a href="logout.php"><i class="icon-off"></i>&nbsp;&nbsp;Log Out</a></li>
-                        </ul>
                     </li> 
                 </ul>
             </div>

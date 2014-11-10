@@ -20,33 +20,25 @@
                 <ul class="nav quick-section">
                     <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle"><div class="iconset top-menu-toggle-dark"></div> </a> </li>        
                     <li class="quicklinks"> <span class="h-seperate"></span></li>
-                    <li class="quicklinks"> <a href="" class=""><i style="color: #2aa198;" class=" icon-download" onclick="window.open('http://localhost:81/OnlineApti/WebServices/Que_Exp.php')"></i> </a> </li> 
+                    <li class="quicklinks"> <a href="" class=""><i class=" icon-download" onclick="window.open('http://localhost:81/OnlineApti/WebServices/Que_Exp.php')"></i> </a> </li> 
+                    <li class="quicklinks"> <span class="h-seperate"></span></li>
+                    <li><p class="text-info" style="font-size: 18px;" >Department of <?php echo $dept ?></p></li>
                 </ul>
-                <ul class="nav quick-section">
-                    <h4><p class="text-info" >Department of <?php echo $dept ?></p></h4>
-                </ul>
+                
             </div>
             <!-- END TOP NAVIGATION MENU -->
             <!-- BEGIN CHAT TOGGLER -->
             <div class="pull-right"> 
-                <div class="chat-toggler">	
-                    <div class="user-details"> 
-                        <div class="username">
-                            <h4 style="color: #06512F;"><span class="semi-bold"><?php echo $Admin_Name; ?></span></h4>									
-                        </div>						
-                    </div> 
-                </div>
+                
                 <ul class="nav quick-section ">
+                    <li><p class="text-info" style="font-size: 18px;" ><span style="color: #15504c;"><?php echo $Admin_Name; ?></span></p></li>
+                     <li class="quicklinks"> <span class="h-seperate"></span></li>
                     <li class="quicklinks"> 
                         <a data-toggle="dropdown" class="dropdown-toggle  pull-right" href="#">						
                             <div class="iconset top-settings-dark "></div> 	
                         </a>
                         <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="dropdownMenu">
-                            <li><a href="index.php"> My Account</a>
-                            </li>
-                            <li><a href="calender.html">My Schedules</a>
-                            </li>
-
+                            
                             <li class="divider"></li>                
                             <li><a href="logout.php"><i class="icon-off"></i>&nbsp;&nbsp;Log Out</a></li>
                         </ul>

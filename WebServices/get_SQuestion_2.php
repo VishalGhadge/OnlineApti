@@ -81,7 +81,7 @@
                                             <div class="span4">
                                             <!--<h4 style="color: #0090D9">Last Update : <?php echo $row['time_stamp']; ?></h4> -->
                                             </div>
-                                            <div class="span4">
+                                            <div class="span4 text-right" style="margin-left: 20%;">
                                                 <h4 style="color: #0090D9">&nbsp;&nbsp;<?php echo $row['Name']; ?></h4>
                                             </div>
                                             <div class="tools">
