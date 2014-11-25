@@ -330,13 +330,15 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                                                                                 <div class="span4">
                                                                                                     <h5><span class="semi-bold">Done :</span></h5>
                                                                                                 </div>
-                                                                                                <div class="span7">
+                                                                                                <div class="span4">
                                                                                                     <button type="button" id="add_ex" class="btn btn-info btn-cons" ><i class="icon-paste"></i> Edit</button>
-                                                                                                    <div class="result sc_infobox " style="display: none;"></div>
                                                                                                 </div>
                                                                                             </div>
-
+                                                                                            <div class="row-fluid span6">
+                                                                                                <button type="button" id="rmv_ex" class="btn btn-danger-dark btn-cons" >Remove All Exam's</button>
+                                                                                            </div>
                                                                                         </div>
+                                                                                        <div class="result sc_infobox " style="display: none;"></div>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>

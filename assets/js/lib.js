@@ -603,7 +603,63 @@ jQuery(window).load(function() {
 
 
     }
+    
+    // Remove Exam ..!!
+    jQuery('.add_exm form').keypress(function(e) {
 
+        if (e.keyCode === 13) {
+            jQuery('.add_exm #rmv_ex').trigger('click');
+            e.preventDefault();
+            return false;
+        }
+    });
+    jQuery('.add_exm #rmv_ex').click(function(e) {
+
+        console.log('click');
+        remove_Exam();
+        e.preventDefault();
+        return false;
+    });
+    
+    function  remove_Exam() {
+
+        //jQuery(".loader img").fadeIn(100);
+        var error_msg_box = null;
+
+        jQuery('.add_exm .result').removeAttr('style');
+        jQuery.post('WebServices/remove_exm.php',
+                {
+                },
+        function(rez) {
+
+
+//            var rez = JSON.parse(response);
+            jQuery('.add_exm .result')
+                    .toggleClass('sc_infobox_style_error', false)
+                    .toggleClass('sc_infobox_style_success', false);
+            if (rez.success == 1) {
+                jQuery('.add_exm .result').addClass('sc_infobox_style_success').html(rez.message);
+                //setTimeout("jQuery('.add_admins .close').trigger('click'); jQuery('.login-popup-link').trigger('click');",500);
+                setTimeout('window.location.reload();', 500);
+//                       
+            } else if (rez.success == -1) {
+                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html(rez.message);
+
+
+                jQuery("#e_pass").toggleClass("error_fields_class", true);
+
+
+
+            } else {
+                jQuery('.add_exm .result').addClass('sc_infobox_style_error').html(rez.message);
+            }
+            jQuery('.add_exm .result').fadeIn(500);
+            jQuery('.add_exm .result').fadeOut(1000);
+
+//            console.log("session destroys");
+        }, 'json');
+    }
+    
     // Student Login
     jQuery('.student_login form').keypress(function(e) {
 
