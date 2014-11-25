@@ -131,10 +131,7 @@
                                                 </div>
                                                 <div class="row-fluid span6">
                                                     <div class="span4">
-                                                        <h5><span class="semi-bold">Remove Exam :</span></h5>
-                                                    </div>
-                                                    <div class="span7">
-                                                        <button type="button" class="btn btn-danger-dark btn-cons">Remove Exam</button>
+                                                        <button type="button" class="btn btn-danger-dark btn-cons" onclick="dis_stud('<?php echo $row['id']; ?>', <?php echo $ad; ?>)">End Exam</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,8 +151,6 @@
 
             $ad++;
         }
-    
-        
     }
 
     # close the connection
@@ -221,7 +216,7 @@
 
         }
     }
-    
+
     function allow_stud(x, y) {
 
         console.log('click');
@@ -239,31 +234,73 @@
                     {
                         e_id: x,
                     },
-            function(rez) {
+                    function(rez) {
 
-                if (rez.success == 1) {
-                    jQuery('.exm_' + y + ' .result').addClass('sc_infobox_style_success').html(rez.message);
-                    setTimeout('window.location.reload();', 600);
+                        if (rez.success == 1) {
+                            jQuery('.exm_' + y + ' .result').addClass('sc_infobox_style_success').html(rez.message);
+                            setTimeout('window.location.reload();', 600);
 
-                } else {
+                        } else {
 
-                    jQuery('.exm_' + y + ' .result').addClass('sc_infobox_style_error').html(rez.message);
-                   
-                }
-                jQuery('.exm_' + y + ' .result').fadeOut(2000);
-               
-                //            console.log("session destroys");
-                //            location.reload();
-                //            
-                //            
+                            jQuery('.exm_' + y + ' .result').addClass('sc_infobox_style_error').html(rez.message);
 
-            }, 'json');
+                        }
+                        jQuery('.exm_' + y + ' .result').fadeOut(2000);
+
+                        //            console.log("session destroys");
+                        //            location.reload();
+                        //            
+                        //            
+
+                    }, 'json');
 
 
 
         }
     }
     
-    
-    
+    function dis_stud(x, y) {
+
+        console.log('click');
+        
+        disallow_stud();
+        //.e.preventDefault();
+        return false;
+        // Check Info to Update ..
+        function  disallow_stud() {
+
+            //jQuery(".Question_" + x + " .loader img").fadeIn(100);
+
+            jQuery('.exm_' + y + ' .result').removeAttr('style');
+            jQuery.post('WebServices/dis_stud.php',
+                    {
+                        e_id: x,
+                    },
+                    function(rez) {
+
+                        if (rez.success == 1) {
+                            jQuery('.exm_' + y + ' .result').addClass('sc_infobox_style_success').html(rez.message);
+                            setTimeout('window.location.reload();', 600);
+
+                        } else {
+
+                            jQuery('.exm_' + y + ' .result').addClass('sc_infobox_style_error').html(rez.message);
+
+                        }
+                        jQuery('.exm_' + y + ' .result').fadeOut(2000);
+
+                        //            console.log("session destroys");
+                        //            location.reload();
+                        //            
+                        //            
+
+                    }, 'json');
+
+
+
+        }
+    }
+
+
+
 </script>

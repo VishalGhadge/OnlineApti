@@ -57,12 +57,15 @@
                                 <div class="accordion-body collapse" id="collapseOne<?php echo $ad; ?>" style="height: 0px;">
                                     <div class="accordion-inner"> 
                                         <div class="row-fluid">
-                                            <h5><span class="semi-bold"><textarea readonly="true" style="font-size: 12pt; line-height: 100%; color: #004444"  id="q" name="q" rows="5" class="span11"><?php echo $row['fb']; ?></textarea></span></h5>
+                                            <h5><span class="semi-bold">
+                                                    <textarea readonly="true" style="font-size: 12pt; line-height: 100%; color: #004444;" id="q" name="q" rows="5" class="span11"><?php echo $row['fb']; ?></textarea>
+                                                </span></h5>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="result sc_infobox " style="display: none;"></div>
                     </div>
                 </td>
@@ -82,6 +85,10 @@
 ?>
 
 <script type="text/javascript">
+    
+    document.getElementById("q").html = true;
+    
+    
     function get_Exam_id(x, y) {
 
         var error_msg_box = null;
@@ -182,6 +189,5 @@
         }
     }
 
-
-
+  
 </script>

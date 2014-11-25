@@ -140,7 +140,7 @@
             }
         }
     }
-    $pdf->Output();
+    $pdf->Output('result_'.$dept.'.pdf','D');
 # close the connection
     $db = null;
 }

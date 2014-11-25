@@ -80,7 +80,7 @@
         if ($Menu_Select == 0) {
             echo "active";
         }
-        ?>"> <a href="feedback.php"> <i class=" icon-thumbs-up-alt"></i> <span class="title">Feedback&nbsp;&nbsp;</span><i class="icon-thumbs-down-alt"></i></a> </li>
+        ?>"> <a href="feedback.php"> <i class="icon-custom-feedbacks"></i> <span class="title">Feedback&nbsp;&nbsp;</span><i class="icon-thumbs-down-alt"></i><i class="icon-thumbs-up-alt"></i></a> </li>
     </ul>
     <div class="side-bar-widgets">
         
