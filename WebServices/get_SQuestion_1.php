@@ -80,12 +80,11 @@
                                             </div>
                                             <div class="span4">
                                             </div>
-                                            <div class="span4 text-right" style="margin-left: 20%;" >
-                                                <h4 style="color: #0090D9">&nbsp;&nbsp;<?php echo $row['Name']; ?></h4>
+                                            <div class="span4 text-right" style="" >
+                                                <h4 style="color: #0090D9; float: right;"><?php echo $row['Name']; ?></h4>
                                             </div>
                                             <div class="tools">
                                                 <a class="collapse"  href="javascript:;"></a>
-                                                <a class="config" data-toggle="modal" href="#grid-config"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -98,9 +97,9 @@
                                                     <div class="radio radio-success">
                                                         <div class="span11">
                                                             <div class="row-fluid">
-                                                                <textarea readonly="true" style="margin-left: 5%; font-size: 12pt; line-height: 130%; color: #004444"  id="q<?php echo $x; ?>" name="q<?php echo $x; ?>" rows="10" class="span11"><?php echo $row['Question']; ?></textarea>
+                                                                <textarea readonly="true" style=" font-size: 12pt; line-height: 130%; color: #004444"  id="q<?php echo $x; ?>" name="q<?php echo $x; ?>" rows="10" class="span11"><?php echo $row['Question']; ?></textarea>
                                                             </div>
-                                                            <div class="row-fluid" style="margin-left: 5%;">
+                                                            <div class="row-fluid" style="">
                                                                 <div class="radio radio-success">
                                                                     <div class="row-fluid">
                                                                         <?php

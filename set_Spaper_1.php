@@ -80,7 +80,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
         <!-- BEGIN SIDEBAR -->
         <?php require './S_left-menu.php'; ?>
         <div class="footer-widget">
-            
+
             <div class="progress transparent progress-success progress-small no-radius no-margin">
                 <div data-percentage="33%" class="bar animate-progress-bar"></div>		
             </div>
@@ -108,7 +108,7 @@ if (!isset($_SESSION['sess_RollNo']) && (trim($_SESSION['Ex_id']) == '')) {
                     <div class="row-fluid">
                         <div class="span4">
                             <a>
-                                <i class="icon-chevron-sign-left disabled" ></i>
+                                <i  class="icon-chevron-sign-left" ></i>
                             </a>
                         </div>
                         <div class="span4 text-center" >

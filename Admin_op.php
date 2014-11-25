@@ -270,7 +270,7 @@ if (!isset($_SESSION['sess_Admin_Id']) && (trim($_SESSION['sess_Name']) == '')) 
                                                                         <div class="accordion-group">
                                                                             <div class="accordion-heading"> 
                                                                                 <a href="#collapseOne<?php echo $ad; ?>" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle collapsed">
-                                                                                    <span class="semi-bold" style="color: #00a1f1;">Add New Exam</span>
+                                                                                    <span class="semi-bold" style="color: #00a1f1;">Add New Exam&nbsp;/&nbsp;Remove All Exam</span>
                                                                                     <i class="icon-plus"></i> 
                                                                                 </a> 
                                                                             </div>
